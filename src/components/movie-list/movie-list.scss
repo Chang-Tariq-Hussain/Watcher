@@ -1,0 +1,47 @@
+/* Movies list */
+.movies-list {
+  padding: 2rem 3rem;
+
+  .ant-select {
+    .ant-select-selector {
+      background: transparent;
+      border: 1px solid var(--black-10);
+
+      .ant-select-selection-placeholder {
+        color: var(--black);
+      }
+    }
+    .ant-select-arrow{
+      color:var(--black-50);
+    }
+  }
+}
+
+.movies-list .list-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 2rem;
+}
+
+.movie-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 1rem;
+}
+
+.pagination{
+  margin-top:2rem;
+
+  .ant-pagination{
+    text-align:center;
+
+    .ant-pagination-item{
+      background:transparent;
+
+      a{
+        color:var(--black);
+      }
+    }
+  }
+}

@@ -1,0 +1,38 @@
+
+.movie-cards > .movie-card {
+  border-radius: var(--border-radius);
+  background: #111; /* optional if your cards are transparent */
+  box-shadow:
+    0 0 15px rgba(255, 255, 255, 0.05),   /* subtle outer light */
+    0 4px 10px rgba(0, 0, 0, 0.6);        /* depth shadow */
+}
+.movie-cards .movie-card > img{
+  height:200px;
+  width:250px;
+  object-position: top;
+  max-width:100%;
+  object-fit:cover;
+  border-top-left-radius:var(--border-radius);
+  border-top-right-radius:var(--border-radius);
+}
+
+.movie-card > .card-info{
+  padding:0 12px 8px 12px;
+}
+
+.card-info > .movie-title{
+  color:var(--black-75);
+  font-weight:600;
+}
+
+.author-avatar{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  padding:5px 0;
+}
+
+.author-avatar .author-name{
+  font-size:1rem;
+  color:var(--black-75);
+}

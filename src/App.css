@@ -1,0 +1,216 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+/* Root Variables */
+:root {
+  /* Colors */
+  --primary-color: #c21f1f;
+  --black: #2a2929;
+  --black-75: rgba(42, 41, 41, 0.75);
+  --black-50: rgba(42, 41, 41, 0.5);
+  --black-25: rgba(42, 41, 41, 0.25);
+  --black-10: rgba(42, 41, 41, 0.1);
+  --white: #ffffff;
+  --green: rgb(5, 175, 82);
+
+  /* Gradients */
+  --gradient-primary: linear-gradient(135deg, #e23232, #ff5a5a);
+  --gradient-dark: linear-gradient(180deg, #141414, #1c1c1c);
+
+  /* Fonts */
+  --font-family: "Poppins", "Segoe UI", sans-serif;
+  --heading-1: clamp(32px, 5vw, 45px);
+  --heading-2: clamp(24px, 4vw, 32px);
+  --heading-3: clamp(20px, 3vw, 27px);
+  --heading-4: clamp(18px, 2.5vw, 23px);
+  --text-base: 16px;
+
+  /* Spacing */
+  --container-padding: 1rem;
+  --border-radius: 10px;
+  --shadow-soft: 0 4px 15px rgba(0, 0, 0, 0.1);
+  --transition-fast: all 0.3s ease;
+}
+
+/* 🌙 Dark Mode */
+[data-theme="dark"] {
+  --white: #121212;
+  --black: #f1f1f1;
+  --black-75: rgba(255, 255, 255, 0.75);
+  --black-50: rgba(255, 255, 255, 0.5);
+  --black-25: rgba(255, 255, 255, 0.25);
+  --black-10: rgba(255, 255, 255, 0.1);
+  --gradient-primary: linear-gradient(135deg, #c21f1f, #c02020);
+  --gradient-dark: linear-gradient(180deg, #000, #111);
+}
+
+/* =========================
+   RESET & GLOBAL BASE
+   ========================= */
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-family: var(--font-family);
+  font-size: 16px;
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--white);
+  color: var(--black);
+  min-height: 100vh;
+  line-height: 1.6;
+  transition: var(--transition-fast);
+}
+
+ #root {
+  width: 100%;
+  height: 100%;
+}
+
+/* =========================
+   TYPOGRAPHY
+   ========================= */
+.heading-1 {
+  font-size: var(--heading-1);
+  line-height: 1.55;
+  letter-spacing: 0.015em;
+  font-weight: 700;
+}
+
+.heading-2 {
+  font-size: var(--heading-2);
+  line-height: 1.55;
+  letter-spacing: 0.02em;
+  font-weight: 600;
+}
+
+.heading-3 {
+  font-size: var(--heading-3);
+  line-height: 1.55;
+  letter-spacing: 0.02em;
+  font-weight: 600;
+}
+
+.heading-4 {
+  font-size: var(--heading-4);
+  line-height: 1.6;
+  letter-spacing: 0.025em;
+  font-weight: 500;
+}
+
+p {
+  font-size: var(--text-base);
+  color: var(--black-75);
+}
+
+/* =========================
+   LAYOUT HELPERS
+   ========================= */
+
+
+.grid-layout {
+  display: grid;
+  grid-template-columns: 250px 1fr; /* Sidebar: 250px (expanded), Main: rest */
+  transition: grid-template-columns 0.3s ease; /* Smooth transition */
+}
+
+.grid-layout.sidebar-collapsed {
+  grid-template-columns: 80px 1fr; /* Sidebar: 80px (collapsed), Main: rest */
+}
+
+.flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.items-center{
+    display:flex;
+    align-items:center;
+    gap:10px;
+}
+
+
+.grid {
+  display: grid;
+  gap: 1.5rem;
+}
+
+
+
+/* =========================
+   BUTTONS
+   ========================= */
+.btn {
+  background: var(--gradient-primary);
+  color: var(--white);
+  padding: 0.6rem 1.4rem;
+  border-radius: var(--border-radius);
+  border: none;
+  cursor: pointer;
+  font-weight: 500;
+  transition: var(--transition-fast);
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+  opacity: 0.9;
+}
+
+/* =========================
+   FOOTER
+   ========================= */
+.footer {
+  background: var(--gradient-dark);
+  color: var(--white);
+  text-align: center;
+  padding: 2rem;
+  margin-top: 3rem;
+  font-size: 0.9rem;
+}
+
+.footer a {
+  color: var(--primary-color);
+  text-decoration: none;
+}
+
+/* =========================
+   RESPONSIVE DESIGN
+   ========================= */
+@media (max-width: 768px) {
+  .navbar ul {
+    display: none;
+  }
+
+  .movie-card img {
+    height: 250px;
+  }
+}
+
+
+.avatar-img{
+  width:32px;
+  height:32px;
+  max-width:100%;
+  border-radius:50%;
+  object-fit:cover;
+}
+
+.small{
+    font-size:14px;
+    color:var(--black-50);
+}
+
+.close-sidebar{
+  border: 1px solid var(--black-10);
+  height:fit-content;
+  border-radius:10px;
+  padding:10px 8px;
+  background:transparent;
+  color:var(--black-75);
+  cursor:pointer;
+}

@@ -1,0 +1,83 @@
+{
+  "token": {
+    "colorPrimary": "#c21f1f",
+    "colorSuccess": "rgb(5, 175, 82)",
+    "colorTextBase": "#2a2929",
+    "colorTextSecondary": "rgba(42, 41, 41, 0.75)",
+    "colorBgBase": "#ffffff",
+    "colorBgContainer": "#f9f9f9",
+    "colorBorder": "rgba(42, 41, 41, 0.1)",
+    "colorLink": "#c21f1f",
+    "colorLinkHover": "#ff5a5a",
+    "colorError": "#e23232",
+    "colorWarning": "#ffae00",
+
+    "fontFamily": "Poppins, 'Segoe UI', sans-serif",
+    "fontSize": 14,
+    "fontSizeHeading1": 45,
+    "fontSizeHeading2": 32,
+    "fontSizeHeading3": 27,
+    "fontSizeHeading4": 23,
+    "fontWeightStrong": 700,
+
+    "borderRadius": 10,
+    "boxShadowSecondary": "0 4px 15px rgba(0, 0, 0, 0.1)",
+    "wireframe": false
+  },
+
+  "components": {
+    "Button": {
+      "colorPrimary": "#c21f1f",
+      "colorPrimaryHover": "#ff5a5a",
+      "colorPrimaryActive": "#a91b1b",
+      "borderRadius": 10,
+      "paddingInline": 22,
+      "paddingBlock": 10,
+      "fontWeight": 500,
+      "controlHeight": 40,
+      "shadow": "0 4px 15px rgba(0, 0, 0, 0.1)"
+    },
+
+    "Card": {
+      "colorBgContainer": "#ffffff",
+      "boxShadowTertiary": "0 4px 15px rgba(0, 0, 0, 0.1)",
+      "borderRadiusLG": 10
+    },
+
+    "Input": {
+      "colorBgContainer": "#ffffff",
+      "colorBorder": "rgba(42, 41, 41, 0.25)",
+      "borderRadius": 10,
+      "colorTextPlaceholder": "rgba(42, 41, 41, 0.5)"
+    },
+
+    "Select": {
+      "colorBgContainer": "#1c1c1c",
+      "colorBorder": "rgba(255, 255, 255, 0.15)",
+      "borderRadius": 10,
+      "colorText": "#ffffff",
+      "colorTextPlaceholder": "rgba(255, 255, 255, 0.6)",
+      "colorPrimaryHover": "#ff5a5a",
+      "colorPrimaryActive": "#c21f1f",
+      "colorBgElevated": "#141414",
+      "optionSelectedBg": "rgba(194, 31, 31, 0.2)",
+      "optionSelectedColor": "#ffffff",
+      "optionActiveBg": "rgba(194, 31, 31, 0.4)",
+      "boxShadowSecondary": "0 4px 15px rgba(0, 0, 0, 0.5)"
+    },
+
+    "Layout": {
+      "colorBgBody": "#ffffff",
+      "colorBgHeader": "#141414",
+      "colorText": "#2a2929"
+    },
+
+    "Typography": {
+      "fontFamily": "Poppins, 'Segoe UI', sans-serif",
+      "colorText": "#2a2929",
+      "colorTextSecondary": "rgba(42, 41, 41, 0.75)"
+    }
+  },
+
+  "algorithm": "defaultAlgorithm"
+}
