@@ -1,3 +1,7 @@
+# Environment Variables
+VITE_TMDB_API_KEY=your api key
+VITE_TMDB_ACCESS_TOKEN=your access token
+
 # React + TypeScript + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
