@@ -5,10 +5,10 @@
   /* Colors */
   --primary-color: #c21f1f;
   --black: #2a2929;
-  --black-75: rgba(42, 41, 41, 0.75);
-  --black-50: rgba(42, 41, 41, 0.5);
-  --black-25: rgba(42, 41, 41, 0.25);
-  --black-10: rgba(42, 41, 41, 0.1);
+  --black-75: rgba(0, 0, 0, 0.75);
+  --black-50: rgba(0, 0, 0, 0.50);
+  --black-25: rgba(0, 0, 0, 0.25);
+  --black-10: rgba(0, 0, 0, 0.10);
   --white: #ffffff;
   --green: rgb(5, 175, 82);
 
@@ -79,6 +79,7 @@ body {
   line-height: 1.55;
   letter-spacing: 0.015em;
   font-weight: 700;
+  color:#fff;
 }
 
 .heading-2 {
