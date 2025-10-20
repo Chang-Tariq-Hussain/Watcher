@@ -14,11 +14,11 @@ export default function Card({ title, overview, poster }: CardProps) {
   return (
     <div className="movie-card">
       <img src={`${IMAGE_BASE}/${poster}`} alt="movie-image" />
-      <div className="card-info">
+      {/* <div className="card-info">
         <p className="movie-title">{title}</p>
         <p className="small">{showContent}</p>
 
-        {/* <div className="author-avatar">
+        <div className="author-avatar">
           <img
             src={`${IMAGE_BASE}/${poster}`}
             alt="avatar image"
@@ -28,8 +28,8 @@ export default function Card({ title, overview, poster }: CardProps) {
             <p className="author-name">John.Smith</p>
             <p className="small">Author</p>
           </div>
-        </div> */}
-      </div>
+        </div>
+      </div> */}
     </div>
   );
 }

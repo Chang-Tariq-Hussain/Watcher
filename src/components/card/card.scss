@@ -8,13 +8,15 @@
 }
 
 .movie-cards .movie-card > img{
-  height:200px;
-  width:250px;
+  // height:300px;
+  height:100%;
+  // width:250px;
   object-position: top;
   max-width:100%;
   object-fit:cover;
-  border-top-left-radius:var(--border-radius);
-  border-top-right-radius:var(--border-radius);
+    border-radius:var(--border-radius);
+  // border-top-left-radius:var(--border-radius);
+  // border-top-right-radius:var(--border-radius);
 }
 
 .movie-card > .card-info{
