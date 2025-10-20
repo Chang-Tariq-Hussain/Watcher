@@ -6,6 +6,7 @@ import Navbar from "./components/navbar/Navbar";
 
 import { useSelector } from "react-redux";
 import type { RootState } from "./redux/store/store";
+import { useEffect } from "react";
 
 function App() {
   const { isSidebarOpen } = useSelector((state: RootState) => state.ui);

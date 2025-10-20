@@ -1,14 +1,18 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./header.scss";
 import { searchMovies } from "../../api/search-api";
 import { useDispatch, useSelector } from "react-redux";
 import type { AppDispatch, RootState } from "../../redux/store/store";
-import { toggleSidebar } from "../../redux/features/ui/uiSlice";
+import { toggleSidebar, toggleTheme } from "../../redux/features/ui/uiSlice";
 
 export default function Header() {
   const [searchKeyword, setSearchKeyword] = useState("");
   const dispatch = useDispatch<AppDispatch>();
-  const { isSidebarOpen } = useSelector((state: RootState) => state.ui);
+  const { isSidebarOpen, theme } = useSelector((state: RootState) => state.ui);
+
+  useEffect(() => {
+    document.documentElement.setAttribute("data-theme", theme);
+  }, [theme]);
 
   const handleSubmit = async (e: any) => {
     e.preventDefault();
@@ -18,6 +22,10 @@ export default function Header() {
 
   const handleSidebarOpen = () => {
     dispatch(toggleSidebar());
+  };
+
+  const handleToggleTheme = () => {
+    dispatch(toggleTheme());
   };
 
   return (
@@ -46,8 +54,12 @@ export default function Header() {
         </form>
 
         <i className="ri-notification-4-line ri-lg"></i>
-        <button className="theme-btn">
-          <i className="ri-sun-line ri-lg"></i>
+        <button className="theme-btn" onClick={handleToggleTheme}>
+          <i
+            className={`${
+              theme === "light" ? "ri-moon-line" : "ri-sun-line"
+            } ri-lg`}
+          ></i>
         </button>
         <div className="avatar">
           <img
