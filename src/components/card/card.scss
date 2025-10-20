@@ -1,11 +1,12 @@
 
 .movie-cards > .movie-card {
   border-radius: var(--border-radius);
-  background: #111; /* optional if your cards are transparent */
+  background: var(--black-10); 
   box-shadow:
     0 0 15px rgba(255, 255, 255, 0.05),   /* subtle outer light */
     0 4px 10px rgba(0, 0, 0, 0.6);        /* depth shadow */
 }
+
 .movie-cards .movie-card > img{
   height:200px;
   width:250px;
