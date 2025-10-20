@@ -145,26 +145,34 @@
   display: none; /* Hide section titles in collapsed state */
 }
 
-// Genres
+// Top Rated
 
-.genres{
-  > p{
-  padding:1rem 0;
-  }
+.top-rated{
+  padding:8px 0;
 
-  .genres-list{
+  .top-rated-list{
     display:flex;
-    flex-wrap:wrap;
-    gap:0.8rem;
+    flex-direction:column;
+    align-items:space-between;
+    justify-content: center;
+    gap:10px;
+    margin-top:10px;
 
-    .genre{
-      background:var(--black-10);
-      color:(--black-25);
-      border:1px solid var(--black-25);
-      border-radius:var(--border-radius);
-      width:fit-content;
-      padding:5px 10px;
-      font-size:12px;
+    .movie{
+      display:flex;
+      align-items:center;
+      gap:10px;
+
+      p{
+        color:var(--black);
+      }
+
+      img{
+        // width:48px;
+        height:32px;
+        object-fit:cover;
+        // border-radius:5px;
+      }
     }
   }
 }
