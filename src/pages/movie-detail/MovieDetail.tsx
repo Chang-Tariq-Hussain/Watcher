@@ -1,9 +1,10 @@
 import { Link, useParams } from "react-router-dom";
 import ThemeBreadcrumb from "../../components/theme-breadcrumb/ThemeBreadcrumb";
 import { useEffect, useState } from "react";
-import type { Movie } from "../../types/movie";
+import type { Movie, MovieDetail } from "../../types/movie";
 import {
   getMovieById,
+  getMovieDetails,
   getMovieVideosById,
   getSimilarMovies,
 } from "../../api/movie-api";
@@ -14,12 +15,14 @@ import type { TabsProps } from "antd";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/swiper.css";
 import { Navigation } from "swiper/modules";
+import { formatRuntime } from "../../utils/helperFunctions";
 
 export default function MovieDetail() {
   const params = useParams();
   const [movieData, setMovieData] = useState<Movie>();
   const [relatedMovies, setRelatedMovies] = useState<Movie[]>();
   const [trailerKey, setTrailerKey] = useState<string | null>();
+  const [movieDetail, setMovieDetail] = useState<MovieDetail>();
 
   const items: TabsProps["items"] = [
     {
@@ -56,7 +59,7 @@ export default function MovieDetail() {
               modules={[Navigation]}
               className="mySwiper"
             >
-              {relatedMovies?.map((relatedMovie) => (
+              {relatedMovies?.slice(0, 4).map((relatedMovie) => (
                 <SwiperSlide style={{ position: "relative" }}>
                   <img
                     src={`${IMAGE_BASE}/${relatedMovie?.poster_path}`}
@@ -103,12 +106,62 @@ export default function MovieDetail() {
     {
       key: "3",
       label: "MORE LIKE THIS",
-      children: "Content of Tab Pane 3",
+      children: (
+        <div className="grid-related">
+          {relatedMovies?.map((relatedMovie) => (
+            <img src={`${IMAGE_BASE}/${relatedMovie?.poster_path}`} alt="" />
+          ))}
+        </div>
+      ),
     },
     {
       key: "4",
       label: "DETAILS",
-      children: "Content of Tab Pane 4",
+      children: (
+        <div className="movie-details-tab">
+          <div className="info">
+            <span>Original Title</span>
+            <p>{movieData?.title}</p>
+          </div>
+          <div className="info">
+            <span>Languages</span>
+            {movieDetail?.spoken_languages?.map((language) => (
+              <p className="small">{language?.name}</p>
+            ))}
+          </div>
+          <div className="info">
+            <span>Duration</span>
+            <p className="small">{formatRuntime(movieDetail?.runtime)}</p>
+          </div>
+          <div className="info small">
+            <span>Genre</span>
+            {movieDetail?.genres?.map((genre) => (
+              <p className="small">{genre.name}</p>
+            ))}
+          </div>
+          <div className="info small">
+            <span>Release Date</span>
+            <p className="small">{movieDetail?.release_date}</p>
+          </div>
+          <div className="production-companies" style={{ marginTop: "20px" }}>
+            <p>Production Companies</p>
+
+            <div style={{ display: "flex", flexWrap: "wrap", gap: "20px" }}>
+              {movieDetail?.production_companies?.map((company) => (
+                <img
+                  src={`${IMAGE_BASE}/${company.logo_path}`}
+                  alt={company.name}
+                  style={{
+                    width: "100px",
+                    objectFit: "contain",
+                    marginTop: "20px",
+                  }}
+                />
+              ))}
+            </div>
+          </div>
+        </div>
+      ),
     },
   ];
 
@@ -135,17 +188,17 @@ export default function MovieDetail() {
       setTrailerKey(trailer?.key || null);
     };
 
+    const fetchMovieDetails = async () => {
+      const data = await getMovieDetails(Number(params.id));
+      setMovieDetail(data);
+    };
+
     fetchMovieById();
     fetchSimilarMovies();
     fetchVideos();
+    fetchMovieDetails();
   }, [params.id]);
 
-  const formatRuntime = (runtime: number | undefined) => {
-    if (!runtime) return "N/A";
-    const hours = Math.floor(runtime / 60);
-    const minutes = runtime % 60;
-    return `${hours}h ${minutes}m`;
-  };
   return (
     <div className="movie-detail">
       <ThemeBreadcrumb title={movieData?.title} />

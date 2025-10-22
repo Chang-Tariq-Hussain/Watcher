@@ -63,3 +63,12 @@ export const getMovieVideosById = async(movieId:number) => {
         console.log("error >>>", error);
     }
 }
+
+export const getMovieDetails= async(movieId:number) => {
+     try {
+        const response = await tmdb.get(`/movie/${movieId}`)
+        return response.data;
+    } catch (error) {
+        console.log("error >>>", error);
+    }
+}
