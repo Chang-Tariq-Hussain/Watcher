@@ -6,6 +6,36 @@ import { getMovieById } from "../../api/movie-api";
 import { IMAGE_BASE } from "../../utils/contant";
 import "./movie-detail.scss";
 
+import { Tabs } from "antd";
+import type { TabsProps } from "antd";
+
+const onChange = (key: string) => {
+  console.log(key);
+};
+
+const items: TabsProps["items"] = [
+  {
+    key: "1",
+    label: "OVERVIEW",
+    children: "Content of Tab Pane 1",
+  },
+  {
+    key: "2",
+    label: "TRAILER & MORE",
+    children: "Content of Tab Pane 2",
+  },
+  {
+    key: "3",
+    label: "MORE LIKE THIS",
+    children: "Content of Tab Pane 3",
+  },
+  {
+    key: "4",
+    label: "DETAILS",
+    children: "Content of Tab Pane 4",
+  },
+];
+
 export default function MovieDetail() {
   const params = useParams();
   const [movieData, setMovieData] = useState<Movie>();
@@ -35,6 +65,16 @@ export default function MovieDetail() {
             <p className="small">{movieData?.release_date.split("-")[0]}</p>
             <p className="small">{movieData?.runtime}</p>
             <p className="small">{movieData?.status}</p>
+          </div>
+
+          {/* Tabs */}
+          <div className="tabs">
+            <Tabs
+              defaultActiveKey="1"
+              size={"large"}
+              items={items}
+              onChange={onChange}
+            />
           </div>
         </div>
       </div>

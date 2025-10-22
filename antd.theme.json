@@ -86,6 +86,16 @@
       "linkColor": "#c21f1f",
       "linkHoverColor": "#c21f1f",
       "lastItemColor": "#c21f1f"
+    },
+    "Tabs": {
+      "colorPrimary": "#c21f1f",      
+      "itemSelectedColor": "#c21f1f", 
+      "itemHoverColor": "#ff5a5a",     
+      "inkBarColor": "#c21f1f",
+      "inkBarHeight": 4,       
+      "itemActiveColor": "#c21f1f",    
+      "itemColor": "#2a2929",         
+      "fontWeightStrong": 600       
     }
   },
 

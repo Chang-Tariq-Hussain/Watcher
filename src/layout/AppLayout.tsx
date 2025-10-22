@@ -1,8 +1,9 @@
 import { useSelector } from "react-redux";
 import Navbar from "../components/navbar/Navbar";
 import type { RootState } from "../redux/store/store";
-import { Outlet, useRoutes } from "react-router-dom";
+import { useRoutes } from "react-router-dom";
 import { routes } from "../routes";
+import Header from "../components/header/Header";
 
 export default function AppLayout() {
   const { isSidebarOpen } = useSelector((state: RootState) => state.ui);
@@ -13,7 +14,11 @@ export default function AppLayout() {
       >
         <Navbar />
 
-        <div className="main">{useRoutes(routes)}</div>
+        <div className="main">
+          {/* <!-- Header --> */}
+          <Header />
+          {useRoutes(routes)}
+        </div>
       </div>
     </div>
   );

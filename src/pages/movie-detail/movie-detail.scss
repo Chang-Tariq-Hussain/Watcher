@@ -1,45 +1,61 @@
+.movie-detail {
+  padding: var(--container-padding);
 
-.movie-detail{
-    padding:var(--container-padding);
-
-    .movie-detail-wrapper{
-        padding:1rem 0;
-        display:grid;
-        grid-template-columns:1fr 3fr;
-        gap:2rem;
-        .movie-detail-left{
-            >img{
-                height:500px;
-            }
-        }
-
-        .movie-detail-right{
-            .vote-average{
-                display:flex;
-                align-items:center;
-                gap:0.6rem;
-
-                i{
-                    color:rgb(208, 255, 36);
-                }
-            }
-            .subheading{
-                display:flex;
-                // gap:2rem;
-
-                p{
-                    padding:0 1rem;
-
-                    &:first-child{
-                        padding-left:0;
-                    }
-                }
-
-                :nth-child(2){
-                    border-left:1px solid var(--black-25);
-                    border-right:1px solid var(--black-25);
-                }
-            }
-        }
+  .ant-tabs {
+    .ant-tabs-ink-bar {
+      height: 4px !important; /* Increase thickness */
+      border-radius: 2px !important; /* Optional: rounded underline */
+      background-color: #c21f1f !important; /* Match your theme’s primary color */
+      transition: all 0.3s ease; /* Smooth movement */
     }
+    .ant-tabs-nav {
+      &::before {
+        border-bottom: 1px solid var(--black-25);
+      }
+    }
+  }
+
+  .movie-detail-wrapper {
+    padding: 1rem 0;
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    gap: 2rem;
+    .movie-detail-left {
+      > img {
+        height: 500px;
+      }
+    }
+
+    .movie-detail-right {
+      .vote-average {
+        display: flex;
+        align-items: center;
+        gap: 0.6rem;
+
+        i {
+          color: rgb(208, 255, 36);
+        }
+      }
+      .subheading {
+        display: flex;
+        // gap:2rem;
+
+        p {
+          padding: 0 1rem;
+
+          &:first-child {
+            padding-left: 0;
+          }
+        }
+
+        :nth-child(2) {
+          border-left: 1px solid var(--black-25);
+          border-right: 1px solid var(--black-25);
+        }
+      }
+      .tabs {
+        padding: var(--container-padding) 0;
+      }
+    }
+  }
 }
