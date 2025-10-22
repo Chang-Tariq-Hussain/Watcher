@@ -44,3 +44,13 @@ export const getMovieById = async(movieId:number) => {
         console.log("error >>>", error);
     }
 }
+
+
+export const getSimilarMovies = async(movieId:number) => {
+     try {
+        const response = await tmdb.get(`/movie/${movieId}/similar`)
+        return response.data;
+    } catch (error) {
+        console.log("error >>>", error);
+    }
+}

@@ -1,5 +1,5 @@
 .movie-detail {
-  padding: var(--container-padding);
+  padding: 2rem 1rem;
 
   .ant-tabs {
     .ant-tabs-ink-bar {
@@ -7,6 +7,10 @@
       border-radius: 2px !important; /* Optional: rounded underline */
       background-color: #c21f1f !important; /* Match your theme’s primary color */
       transition: all 0.3s ease; /* Smooth movement */
+    }
+
+    .ant-tabs-tabpane {
+      color: var(--black-75);
     }
     .ant-tabs-nav {
       &::before {
@@ -22,11 +26,12 @@
     gap: 2rem;
     .movie-detail-left {
       > img {
-        height: 500px;
+        height: 600px;
       }
     }
 
     .movie-detail-right {
+      width: 100%;
       .vote-average {
         display: flex;
         align-items: center;
@@ -55,6 +60,72 @@
       }
       .tabs {
         padding: var(--container-padding) 0;
+        width: 100%;
+
+        .overview {
+          width: 100%;
+
+          .info {
+            display: flex;
+            align-items: center;
+            margin-top: 1.5rem;
+            gap: 5px;
+
+            span {
+              margin-right: 2rem;
+              color: var(--black-25);
+            }
+
+            p {
+              padding: 5px 10px;
+              border: 1px solid var(--black-25);
+              border-radius: 10px;
+            }
+          }
+          .related {
+            padding: var(--container-padding) 0;
+            width: 100%;
+
+            // 👈 CRITICAL FIXES:
+            overflow: hidden !important; // Prevent horizontal overflow
+            position: relative; // Contain Swiper properly
+
+            p {
+              padding: 1rem 0;
+            }
+            .mySwiper {
+              // width: 100% !important; // 👈 Force 100% width
+              // max-width: 100% !important; // 👈 Prevent stretching
+              height: 200px; // Fixed height
+              position: relative;
+              .swiper-wrapper {
+                width: 100% !important; // 👈 Force wrapper to container width
+                position: absolute;
+                left: 0;
+              }
+
+              .swiper-slide {
+                width: 300px !important; // 👈 Fixed slide width (adjust as needed)
+                height: 100% !important; // 👈 Fixed slide height
+                max-width: 100%;
+                flex-shrink: 0; // 👈 Prevent shrinking
+                background: rgb(168, 168, 168);
+                img {
+                  width: 100%;
+                  height: 250px;
+                  object-fit: cover;
+                  object-position: top center;
+                }
+              }
+            }
+
+            img {
+              width: 100%;
+              height: 200px;
+              object-fit: cover;
+            }
+          }
+        }
       }
     }
   }

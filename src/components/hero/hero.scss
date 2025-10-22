@@ -35,14 +35,14 @@
   left: 0;
   width: 70%; /* Adjust overlay width */
   height: 100%; /* Covers vertically */
-background: linear-gradient(
-  to right,
-  rgba(0, 0, 0, 0.95) 0%,   /* Very dark on the left for text visibility */
-  rgba(0, 0, 0, 0.7) 25%,   /* Smooth fade */
-  rgba(0, 0, 0, 0.3) 60%,   /* Soft mid transition */
-  rgba(0, 0, 0, 0.1) 80%,   /* Almost transparent */
-  transparent 100%           /* Fully clear on the right */
-);
+  background: linear-gradient(
+    to right,
+    rgba(0, 0, 0, 0.95) 0%,
+    /* Very dark on the left for text visibility */ rgba(0, 0, 0, 0.7) 25%,
+    /* Smooth fade */ rgba(0, 0, 0, 0.3) 60%,
+    /* Soft mid transition */ rgba(0, 0, 0, 0.1) 80%,
+    /* Almost transparent */ transparent 100% /* Fully clear on the right */
+  );
   z-index: 1;
 }
 
@@ -64,15 +64,15 @@ background: linear-gradient(
   width: fit-content;
   padding: 4px 8px;
 
-  p{
-    color:#fff;
+  p {
+    color: #fff;
   }
 }
 
 /* Overview */
 .hero-section .overview {
   width: 60%;
-  color:#b9b9b9 !important;
+  color: #b9b9b9 !important;
 }
 
 /* Info Section */
@@ -87,8 +87,8 @@ background: linear-gradient(
   align-items: center;
   gap: 10px;
 
-  p{
-    color:#fff;
+  p {
+    color: #fff;
   }
 }
 
@@ -112,7 +112,10 @@ background: linear-gradient(
 }
 
 .watch-btn:hover {
-  background: var(--primary-color-hover, #f40612); /* Fallback hover color if variable not defined */
+  background: var(
+    --primary-color-hover,
+    #f40612
+  ); /* Fallback hover color if variable not defined */
 }
 
 .hero-swiper {

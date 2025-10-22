@@ -135,6 +135,12 @@ p {
     gap:10px;
 }
 
+.justify-between{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+}
+
 
 .grid {
   display: grid;
@@ -214,4 +220,8 @@ p {
   background:transparent;
   color:var(--black-75);
   cursor:pointer;
+}
+
+a{
+  color:var(--primary-color);
 }
