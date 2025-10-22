@@ -16,7 +16,7 @@ const initialState: MovieState = {
   movies: [],
   category: "popular",
   page: 1,
-  totalPages: 0,
+  totalPages: 500,
   loading: false,
   error: null,
 };
@@ -49,7 +49,7 @@ const movieSlice = createSlice({
       .addCase(fetchMoviesByCategory.fulfilled, (state, action) => {
         state.loading = false;
         state.movies = action.payload.results;
-        state.totalPages = action.payload.total_pages;
+        state.totalPages = action.payload.total_pages > 500 ? 500 : action.payload.total_pages;
       })
       .addCase(fetchMoviesByCategory.rejected, (state, action) => {
         state.loading = false;

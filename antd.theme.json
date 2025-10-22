@@ -76,6 +76,16 @@
       "fontFamily": "Poppins, 'Segoe UI', sans-serif",
       "colorText": "#2a2929",
       "colorTextSecondary": "rgba(42, 41, 41, 0.75)"
+    },
+    "Breadcrumb": {
+      "colorText": "rgba(42, 41, 41, 0.75)",
+      "colorTextHover": "#c21f1f",
+      "colorTextActive": "#c21f1f",
+      "colorTextSeparator": "rgba(42, 41, 41, 0.25)",
+      "fontSize": 14,
+      "linkColor": "#c21f1f",
+      "linkHoverColor": "#c21f1f",
+      "lastItemColor": "#c21f1f"
     }
   },
 

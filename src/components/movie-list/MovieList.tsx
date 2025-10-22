@@ -11,6 +11,8 @@ import {
   setPage,
 } from "../../redux/features/movies/movieSlice";
 import type { Movie } from "../../types/movie";
+import ThemeBreadcrumb from "../theme-breadcrumb/ThemeBreadcrumb";
+import { Link } from "react-router-dom";
 
 const categoryOptions = [
   { value: "popular", label: "Popular" },
@@ -44,6 +46,7 @@ export default function MovieList() {
 
   return (
     <div className="movies-list">
+      <ThemeBreadcrumb />
       <div className="list-heading">
         <h3 className="heading-3">Browse Movies</h3>
         <Select
@@ -69,12 +72,14 @@ export default function MovieList() {
       ) : movies.length > 0 ? (
         <div className="movie-cards">
           {movies.map((movie: Movie) => (
-            <Card
-              key={movie.id}
-              title={movie.title}
-              overview={movie.overview}
-              poster={movie.poster_path}
-            />
+            <Link to={`/movies/${movie.id}`}>
+              <Card
+                key={movie.id}
+                title={movie.title}
+                overview={movie.overview}
+                poster={movie.poster_path}
+              />
+            </Link>
           ))}
         </div>
       ) : (
@@ -84,7 +89,7 @@ export default function MovieList() {
       <div className="pagination">
         <Pagination
           current={page}
-          total={totalPages * 10} // TMDB usually returns total_pages
+          total={totalPages}
           pageSize={1}
           onChange={handlePageChange}
           showSizeChanger={false}

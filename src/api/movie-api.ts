@@ -35,3 +35,12 @@ export const getTopRatedMovies = async() => {
         console.log("error >>>", error);
     }
 }
+
+export const getMovieById = async(movieId:number) => {
+     try {
+        const response = await tmdb.get(`/movie/${movieId}`)
+        return response.data;
+    } catch (error) {
+        console.log("error >>>", error);
+    }
+}
