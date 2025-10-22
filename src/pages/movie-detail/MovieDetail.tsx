@@ -2,7 +2,11 @@ import { Link, useParams } from "react-router-dom";
 import ThemeBreadcrumb from "../../components/theme-breadcrumb/ThemeBreadcrumb";
 import { useEffect, useState } from "react";
 import type { Movie } from "../../types/movie";
-import { getMovieById, getSimilarMovies } from "../../api/movie-api";
+import {
+  getMovieById,
+  getMovieVideosById,
+  getSimilarMovies,
+} from "../../api/movie-api";
 import { IMAGE_BASE } from "../../utils/contant";
 import "./movie-detail.scss";
 import { Tabs } from "antd";
@@ -15,6 +19,7 @@ export default function MovieDetail() {
   const params = useParams();
   const [movieData, setMovieData] = useState<Movie>();
   const [relatedMovies, setRelatedMovies] = useState<Movie[]>();
+  const [trailerKey, setTrailerKey] = useState<string | null>();
 
   const items: TabsProps["items"] = [
     {
@@ -78,7 +83,22 @@ export default function MovieDetail() {
     {
       key: "2",
       label: "TRAILER & MORE",
-      children: "Content of Tab Pane 2",
+      children: (
+        <div>
+          {trailerKey ? (
+            <iframe
+              width="100%"
+              height="400"
+              src={`https://www.youtube.com/embed/${trailerKey}`}
+              title="Movie Trailer"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+            ></iframe>
+          ) : (
+            <p>No Trailer Found</p>
+          )}
+        </div>
+      ),
     },
     {
       key: "3",
@@ -101,17 +121,24 @@ export default function MovieDetail() {
       setMovieData(data);
     };
 
-    fetchMovieById();
-  }, []);
-
-  useEffect(() => {
     const fetchSimilarMovies = async () => {
       const data = await getSimilarMovies(Number(params.id));
       setRelatedMovies(data.results);
     };
 
+    const fetchVideos = async () => {
+      const data = await getMovieVideosById(Number(params.id));
+      const trailer = data.results.find(
+        (v: any) => v.type === "Trailer" && v.site === "YouTube"
+      );
+      console.log("tariler key", trailer.key);
+      setTrailerKey(trailer?.key || null);
+    };
+
+    fetchMovieById();
     fetchSimilarMovies();
-  }, []);
+    fetchVideos();
+  }, [params.id]);
 
   const formatRuntime = (runtime: number | undefined) => {
     if (!runtime) return "N/A";
