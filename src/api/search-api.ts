@@ -10,3 +10,12 @@ export const searchMovies = async(keyword:string) => {
     }
 }
 
+export const searchMulti = async(query:string) => {
+    try {
+        const response = await tmdb.get(`/search/multi?query=${query}`)
+        return response.data;
+    } catch (error) {
+        console.log("error >>>", error);
+    }
+}
+

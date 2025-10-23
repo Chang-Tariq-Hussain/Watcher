@@ -1,14 +1,20 @@
 import { useEffect, useState } from "react";
 import "./header.scss";
-import { searchMovies } from "../../api/search-api";
+import { searchMovies, searchMulti } from "../../api/search-api";
 import { useDispatch, useSelector } from "react-redux";
 import type { AppDispatch, RootState } from "../../redux/store/store";
 import { toggleSidebar, toggleTheme } from "../../redux/features/ui/uiSlice";
+import { useNavigate } from "react-router-dom";
+import {
+  fetchSearchResults,
+  setQuery,
+} from "../../redux/features/search/searchSlice";
 
 export default function Header() {
   const [searchKeyword, setSearchKeyword] = useState("");
   const dispatch = useDispatch<AppDispatch>();
   const { isSidebarOpen, theme } = useSelector((state: RootState) => state.ui);
+  const navigate = useNavigate();
 
   useEffect(() => {
     document.documentElement.setAttribute("data-theme", theme);
@@ -16,8 +22,9 @@ export default function Header() {
 
   const handleSubmit = async (e: any) => {
     e.preventDefault();
-    const response = await searchMovies(searchKeyword);
-    console.log(response.data);
+    dispatch(fetchSearchResults(searchKeyword));
+    dispatch(setQuery(searchKeyword));
+    navigate("/search");
   };
 
   const handleSidebarOpen = () => {

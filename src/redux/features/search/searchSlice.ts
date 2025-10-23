@@ -1,10 +1,11 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import { searchMovies } from "../../../api/search-api";
+import { searchMulti } from "../../../api/search-api";
 import type { Movie } from "../../../types/movie";
+import type { MultiSearchResult } from "../../../types/search";
 
 interface SearchState {
   query: string;
-  results: Movie[];
+  results: MultiSearchResult[];
   loading: boolean;
   error: string | null;
 }
@@ -19,7 +20,7 @@ const initialState: SearchState = {
 export const fetchSearchResults = createAsyncThunk(
   "search/fetchResults",
   async (query: string) => {
-    const data = await searchMovies(query);
+    const data = await searchMulti(query);
     return data.results;
   }
 );
