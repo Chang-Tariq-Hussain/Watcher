@@ -21,7 +21,8 @@ export default function ThemeBreadcrumb({
       const name = pathSnippets[index]
         .replace(/-/g, " ") // Replace dashes with spaces
         .replace(/\b\w/g, (char) => char.toUpperCase()); // Capitalize words
-
+      console.log("pathSnippets", pathSnippets.length);
+      console.log("title", title);
       return {
         title:
           index === pathSnippets.length - 1 ? (

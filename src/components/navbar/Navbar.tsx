@@ -5,13 +5,14 @@ import { useEffect, useState } from "react";
 import { getTopRatedMovies } from "../../api/movie-api";
 import type { Movie, MovieListResponse } from "../../types/movie";
 import { IMAGE_BASE } from "../../utils/contant";
+import { Link } from "react-router-dom";
 
 export const mainMenuItems = [
-  { icon: "fa-compass", label: "Browse", link: "#" },
-  { icon: "fa-arrow-trend-up", label: "Trending", link: "#" },
-  { icon: "fa-user", label: "Following", link: "#" },
-  { icon: "fa-video", label: "Your Videos", link: "#" },
-  { icon: "fa-table-list", label: "Playlist", link: "#" },
+  { icon: "fa-compass", label: "Browse", link: "/" },
+  { icon: "fa-arrow-trend-up", label: "Trending", link: "/trending" },
+  { icon: "ri-movie-line", label: "Movies", link: "/movies" },
+  { icon: "ri-tv-line", label: "TV Shows", link: "/tv-shows" },
+  { icon: "fa-grip", label: "Collection", link: "/collections" },
 ];
 
 export default function Navbar() {
@@ -51,12 +52,12 @@ export default function Navbar() {
         <ul>
           {mainMenuItems.map((item) => (
             <li key={item.label}>
-              <a href={item.link}>
+              <Link to={item.link}>
                 <button>
                   <i className={`fa-solid ${item.icon} fa-lg`}></i>
                   {!isSidebarOpen && <span>{item.label}</span>}
                 </button>
-              </a>
+              </Link>
             </li>
           ))}
         </ul>
