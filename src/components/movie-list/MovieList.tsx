@@ -13,6 +13,7 @@ import {
 import type { Movie } from "../../types/movie";
 import ThemeBreadcrumb from "../theme-breadcrumb/ThemeBreadcrumb";
 import { Link } from "react-router-dom";
+import Cards from "../cards/Cards";
 
 const categoryOptions = [
   { value: "popular", label: "Popular" },
@@ -70,18 +71,7 @@ export default function MovieList() {
           <Spin size="large" tip="Loading movies..." />
         </div>
       ) : movies.length > 0 ? (
-        <div className="movie-cards">
-          {movies.map((movie: Movie) => (
-            <Link to={`/movies/${movie.id}`}>
-              <Card
-                key={movie.id}
-                title={movie.title}
-                overview={movie.overview}
-                poster={movie.poster_path}
-              />
-            </Link>
-          ))}
-        </div>
+        <Cards data={movies} link="/movie" />
       ) : (
         <Empty description="No movies found" />
       )}

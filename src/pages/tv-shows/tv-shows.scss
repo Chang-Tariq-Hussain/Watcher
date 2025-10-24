@@ -1,0 +1,23 @@
+.list-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 2rem;
+}
+
+.tv-shows {
+  .ant-select {
+    .ant-select-selector {
+      background: transparent;
+      border: 1px solid var(--black-10);
+      color: var(--black-75);
+
+      .ant-select-selection-placeholder {
+        color: var(--black);
+      }
+    }
+    .ant-select-arrow {
+      color: var(--black-50);
+    }
+  }
+}
