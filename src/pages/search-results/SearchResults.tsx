@@ -22,11 +22,13 @@ export default function SearchResults() {
     }
   }, [query]);
 
+  const filteredResults = results.filter((it) => it.media_type !== "person");
+
   return (
     <div className="search-results">
       <ThemeBreadcrumb title={`Search results for ${query}`} />
 
-      {results.map((result: MultiSearchResult) => {
+      {filteredResults.map((result: MultiSearchResult) => {
         const title =
           result.media_type === "movie"
             ? result.title
@@ -57,13 +59,13 @@ export default function SearchResults() {
               <div className="loading-state">
                 <Spin size="large" tip="Loading movies..." />
               </div>
-            ) : results.length > 0 ? (
+            ) : filteredResults.length > 0 ? (
               <div className="movie-cards">
-                {results.map((result: MultiSearchResult) => (
+                {filteredResults.map((result: MultiSearchResult) => (
                   <Link to={link}>
                     <Card
                       key={result.id}
-                      title={title}
+                      // title={title}
                       overview={overview}
                       poster={poster}
                     />

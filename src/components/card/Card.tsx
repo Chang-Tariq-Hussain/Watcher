@@ -1,12 +1,12 @@
 import "./card.scss";
 
 export interface CardProps {
-  title: string;
+  title?: string;
   overview: string;
   poster: string | null;
 }
 
-export default function Card({ title, overview, poster }: CardProps) {
+export default function Card({ overview, poster }: CardProps) {
   const IMAGE_BASE = "https://image.tmdb.org/t/p/w500";
 
   const showContent =
