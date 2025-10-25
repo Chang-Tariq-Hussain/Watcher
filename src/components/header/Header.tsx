@@ -14,6 +14,7 @@ export default function Header() {
   const [searchKeyword, setSearchKeyword] = useState("");
   const dispatch = useDispatch<AppDispatch>();
   const { isSidebarOpen, theme } = useSelector((state: RootState) => state.ui);
+  const { page } = useSelector((state: RootState) => state.search);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -22,7 +23,7 @@ export default function Header() {
 
   const handleSubmit = async (e: any) => {
     e.preventDefault();
-    dispatch(fetchSearchResults(searchKeyword));
+    dispatch(fetchSearchResults({ query: searchKeyword, page }));
     dispatch(setQuery(searchKeyword));
     navigate("/search");
   };
@@ -34,6 +35,10 @@ export default function Header() {
   const handleToggleTheme = () => {
     dispatch(toggleTheme());
   };
+
+  useEffect(() => {
+    dispatch(fetchSearchResults({ query: searchKeyword, page }));
+  }, [page]);
 
   return (
     <div className="header">

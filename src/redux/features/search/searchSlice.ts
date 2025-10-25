@@ -1,11 +1,12 @@
-import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import { createSlice, createAsyncThunk, type PayloadAction } from "@reduxjs/toolkit";
 import { searchMulti } from "../../../api/search-api";
-import type { Movie } from "../../../types/movie";
 import type { MultiSearchResult } from "../../../types/search";
 
 interface SearchState {
   query: string;
   results: MultiSearchResult[];
+  page: number;
+  totalPages: number;
   loading: boolean;
   error: string | null;
 }
@@ -15,13 +16,15 @@ const initialState: SearchState = {
   results: [],
   loading: false,
   error: null,
+  page: 1,
+  totalPages: 500
 };
 
-export const fetchSearchResults = createAsyncThunk(
+export const fetchSearchResults = createAsyncThunk<any,  { query: string; page: number }>(
   "search/fetchResults",
-  async (query: string) => {
-    const data = await searchMulti(query);
-    return data.results;
+  async ({query, page}) => {
+    const data = await searchMulti(query, page);
+    return data;
   }
 );
 
@@ -31,6 +34,9 @@ const searchSlice = createSlice({
   reducers: {
     setQuery: (state, action) => {
       state.query = action.payload;
+    },
+    setPage: (state, action: PayloadAction<number>) => {
+      state.page = action.payload;
     },
     clearResults: (state) => {
       state.results = [];
@@ -44,7 +50,8 @@ const searchSlice = createSlice({
       })
       .addCase(fetchSearchResults.fulfilled, (state, action) => {
         state.loading = false;
-        state.results = action.payload;
+        state.results = action.payload.results;
+        state.totalPages = action.payload.total_pages > 500 ? 500 : action.payload.total_pages;
       })
       .addCase(fetchSearchResults.rejected, (state, action) => {
         state.loading = false;
@@ -53,5 +60,5 @@ const searchSlice = createSlice({
   },
 });
 
-export const { setQuery, clearResults } = searchSlice.actions;
+export const { setQuery, clearResults, setPage } = searchSlice.actions;
 export default searchSlice.reducer;

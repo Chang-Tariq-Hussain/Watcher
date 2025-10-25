@@ -1,19 +1,22 @@
 import ThemeBreadcrumb from "../../components/theme-breadcrumb/ThemeBreadcrumb";
-import { useSelector } from "react-redux";
-import { type RootState } from "../../redux/store/store";
+import { useDispatch, useSelector } from "react-redux";
+import { type AppDispatch, type RootState } from "../../redux/store/store";
 import { Link, useNavigate } from "react-router-dom";
 import Card from "../../components/card/Card";
 import type { MultiSearchResult } from "../../types/search";
-import { Empty, Spin } from "antd";
+import { Empty, Pagination, Spin } from "antd";
 import "./search-results.scss";
 import { useEffect } from "react";
+import { setPage } from "../../redux/features/search/searchSlice";
+import ImageSkeleton from "../../components/skeletons/ImageSkeleton";
 
 export default function SearchResults() {
-  const { results, loading, query } = useSelector(
+  const { results, loading, query, page, totalPages } = useSelector(
     (state: RootState) => state.search
   );
 
   const navigate = useNavigate();
+  const dispatch = useDispatch<AppDispatch>();
 
   useEffect(() => {
     console.log("Resuls", results);
@@ -22,8 +25,12 @@ export default function SearchResults() {
     }
   }, [query]);
 
-  const filteredResults = results.filter((it) => it.media_type !== "person");
+  const handlePageChange = (pageNumber: number) => {
+    dispatch(setPage(pageNumber));
+  };
 
+  const filteredResults = results.filter((it) => it.media_type !== "person");
+  console.log("totalPages", totalPages);
   return (
     <div className="search-results">
       <ThemeBreadcrumb title={`Search results for ${query}`} />
@@ -56,21 +63,21 @@ export default function SearchResults() {
         return (
           <div>
             {loading ? (
-              <div className="loading-state">
-                <Spin size="large" tip="Loading movies..." />
+              <div className="movie-cards">
+                {Array.from({ length: 20 }).map((_, index) => (
+                  <ImageSkeleton />
+                ))}
               </div>
             ) : filteredResults.length > 0 ? (
               <div className="movie-cards">
-                {filteredResults.map((result: MultiSearchResult) => (
-                  <Link to={link}>
-                    <Card
-                      key={result.id}
-                      // title={title}
-                      overview={overview}
-                      poster={poster}
-                    />
-                  </Link>
-                ))}
+                <Link to={link}>
+                  <Card
+                    key={result.id}
+                    // title={title}
+                    overview={overview}
+                    poster={poster}
+                  />
+                </Link>
               </div>
             ) : (
               <Empty description="No movies found" />
@@ -78,6 +85,15 @@ export default function SearchResults() {
           </div>
         );
       })}
+      <div className="pagination">
+        <Pagination
+          current={page}
+          total={totalPages}
+          pageSize={20}
+          onChange={handlePageChange}
+          showSizeChanger={false}
+        />
+      </div>
     </div>
   );
 }

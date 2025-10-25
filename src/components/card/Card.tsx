@@ -1,3 +1,4 @@
+import ImageSkeleton from "../skeletons/ImageSkeleton";
 import "./card.scss";
 
 export interface CardProps {
@@ -13,7 +14,12 @@ export default function Card({ overview, poster }: CardProps) {
     overview.length < 40 ? overview : overview.slice(0, 50) + "...";
   return (
     <div className="movie-card">
-      <img src={`${IMAGE_BASE}/${poster}`} alt="movie-image" />
+      {poster ? (
+        <img src={`${IMAGE_BASE}/${poster}`} alt="movie-image" />
+      ) : (
+        <ImageSkeleton />
+      )}
+
       {/* <div className="card-info">
         <p className="movie-title">{title}</p>
         <p className="small">{showContent}</p>
