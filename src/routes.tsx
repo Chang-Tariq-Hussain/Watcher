@@ -1,3 +1,4 @@
+import HomepageSkeleton from "./components/skeletons/homage/HomepageSkeleton";
 import Collection from "./pages/collection/Collection";
 import Homepage from "./pages/homepage/Homepage";
 import MediaDetail from "./pages/media-detail/MediaDetail";
@@ -33,5 +34,9 @@ export const routes = [
   {
     path: "/collections",
     element: <Collection />,
+  },
+  {
+    path: "/test",
+    element: <HomepageSkeleton />,
   },
 ];

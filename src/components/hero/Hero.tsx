@@ -5,6 +5,7 @@ import type { Movie } from "../../types/movie";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Pagination } from "swiper/modules";
 import "swiper/swiper.css";
+import HomepageSkeleton from "../skeletons/homage/HomepageSkeleton";
 
 export default function Hero() {
   const IMAGE_BASE = "https://image.tmdb.org/t/p/w500";
@@ -88,9 +89,7 @@ export default function Hero() {
         ))
       ) : (
         <SwiperSlide>
-          <div className="hero-section" style={{ background: "#000" }}>
-            <p>Loading...</p> {/* Fallback UI while movies load */}
-          </div>
+          <HomepageSkeleton />
         </SwiperSlide>
       )}
     </Swiper>

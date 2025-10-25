@@ -14,6 +14,7 @@ import type { Movie } from "../../types/movie";
 import ThemeBreadcrumb from "../theme-breadcrumb/ThemeBreadcrumb";
 import { Link } from "react-router-dom";
 import Cards from "../cards/Cards";
+import Rect from "../skeletons/ImageSkeleton";
 
 const categoryOptions = [
   { value: "popular", label: "Popular" },
@@ -67,9 +68,7 @@ export default function MovieList() {
       </div>
 
       {loading ? (
-        <div className="loading-state">
-          <Spin size="large" tip="Loading movies..." />
-        </div>
+        <Rect />
       ) : movies.length > 0 ? (
         <Cards data={movies} link="/movies" />
       ) : (

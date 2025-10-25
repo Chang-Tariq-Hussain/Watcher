@@ -1,0 +1,36 @@
+.ant-skeleton-element,
+.ant-skeleton-paragraph {
+  .ant-skeleton-content {
+    background: var(--black-25);
+    border-radius: 8px;
+  }
+}
+
+.ant-skeleton.ant-skeleton-active .ant-skeleton-content::after {
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(226, 50, 50, 0.15),
+    transparent
+  );
+}
+
+.skeleton-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 1rem;
+  width: 100%;
+  .skeleton-card {
+    width: 100%;
+    height: 290px;
+
+    .ant-skeleton {
+      width: 100%;
+      height: 100%;
+
+      .ant-skeleton-image {
+        height: 100%;
+      }
+    }
+  }
+}
