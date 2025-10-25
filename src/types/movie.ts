@@ -17,6 +17,8 @@ export interface Movie {
   tagline?: string;
   status?: string;
   homepage?: string;
+  media_type?: string;
+
 }
 
 export interface MovieListResponse {

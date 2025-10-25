@@ -47,7 +47,7 @@ export default function TvShows() {
       <div className="tv-shows-list  container">
         <ThemeBreadcrumb title="Tv Shows" />
         <div className="list-heading">
-          <h3 className="heading-3">Browse Movies</h3>
+          <h3 className="heading-3">Browse Tv Shows</h3>
           <Select
             showSearch
             style={{ width: 250, height: 50 }}

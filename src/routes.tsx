@@ -1,6 +1,6 @@
 import Collection from "./pages/collection/Collection";
 import Homepage from "./pages/homepage/Homepage";
-import MovieDetail from "./pages/movie-detail/MovieDetail";
+import MediaDetail from "./pages/media-detail/MediaDetail";
 import Movies from "./pages/movies/Movies";
 import SearchResults from "./pages/search-results/SearchResults";
 import Trending from "./pages/trending/Trending";
@@ -11,8 +11,8 @@ export const routes = [
     element: <Homepage />,
   },
   {
-    path: "/movies/:id",
-    element: <MovieDetail />,
+    path: "/:type/:id", // ✅ unified route for movie & tv
+    element: <MediaDetail />,
   },
   {
     path: "/search",

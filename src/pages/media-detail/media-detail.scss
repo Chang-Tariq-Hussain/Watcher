@@ -1,4 +1,4 @@
-.movie-detail {
+.media-detail {
   padding: 2rem 1rem;
 
   .ant-tabs {
@@ -19,20 +19,22 @@
     }
   }
 
-  .movie-detail-wrapper {
+  .media-detail-wrapper {
     padding: 1rem 0;
     display: grid;
     grid-template-columns: 1fr 3fr;
     gap: 2rem;
-    .movie-detail-left {
+
+    .media-detail-left {
       > img {
         height: 600px;
         border-radius: var(--border-radius);
       }
     }
 
-    .movie-detail-right {
+    .media-detail-right {
       width: 100%;
+
       .vote-average {
         display: flex;
         align-items: center;
@@ -42,9 +44,9 @@
           color: rgb(208, 255, 36);
         }
       }
+
       .subheading {
         display: flex;
-        // gap:2rem;
 
         p {
           padding: 0 1rem;
@@ -59,6 +61,7 @@
           border-right: 1px solid var(--black-25);
         }
       }
+
       .tabs {
         padding: var(--container-padding) 0;
         width: 100%;
@@ -66,7 +69,6 @@
         .info {
           display: flex;
           align-items: center;
-          // margin-top: 1.5rem;
           gap: 5px;
 
           span {
@@ -76,7 +78,6 @@
 
           p {
             padding: 5px 10px;
-            // border: 1px solid var(--black-25);
             border-radius: 10px;
           }
         }
@@ -89,7 +90,6 @@
           img {
             width: 300px;
             border-radius: var(--border-radius);
-            // height: 200px;
           }
         }
 
@@ -113,33 +113,33 @@
               border-radius: 10px;
             }
           }
+
           .related {
             padding: var(--container-padding) 0;
             width: 100%;
 
-            // 👈 CRITICAL FIXES:
-            overflow: hidden !important; // Prevent horizontal overflow
-            position: relative; // Contain Swiper properly
+            overflow: hidden !important;
+            position: relative;
 
             p {
               padding: 1rem 0;
             }
+
             .mySwiper {
-              // width: 100% !important; // 👈 Force 100% width
-              // max-width: 100% !important; // 👈 Prevent stretching
-              height: 200px; // Fixed height
+              height: 200px;
               position: relative;
+
               .swiper-wrapper {
-                width: 100% !important; // 👈 Force wrapper to container width
+                width: 100% !important;
                 position: absolute;
                 left: 0;
               }
 
               .swiper-slide {
-                width: 300px !important; // 👈 Fixed slide width (adjust as needed)
-                height: 100% !important; // 👈 Fixed slide height
+                width: 300px !important;
+                height: 100% !important;
                 max-width: 100%;
-                flex-shrink: 0; // 👈 Prevent shrinking
+                flex-shrink: 0;
                 background: rgb(168, 168, 168);
 
                 img {

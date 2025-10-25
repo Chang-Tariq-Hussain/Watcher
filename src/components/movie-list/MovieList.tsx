@@ -71,7 +71,7 @@ export default function MovieList() {
           <Spin size="large" tip="Loading movies..." />
         </div>
       ) : movies.length > 0 ? (
-        <Cards data={movies} link="/movie" />
+        <Cards data={movies} link="/movies" />
       ) : (
         <Empty description="No movies found" />
       )}
