@@ -12,6 +12,7 @@ import {
   setPage,
 } from "../../redux/features/tv/tvSlice";
 import { useEffect } from "react";
+import ImageSkeleton from "../../components/skeletons/ImageSkeleton";
 
 const categoryOptions = [
   { value: "popular", label: "Popular" },
@@ -47,7 +48,7 @@ export default function TvShows() {
       <div className="tv-shows-list  container">
         <ThemeBreadcrumb title="Tv Shows" />
         <div className="list-heading">
-          <h3 className="heading-3">Browse Tv Shows</h3>
+          <h2 className="heading-2 border-bottom">Tv Shows</h2>
           <Select
             showSearch
             style={{ width: 250, height: 50 }}
@@ -65,9 +66,7 @@ export default function TvShows() {
         </div>
 
         {loading ? (
-          <div className="loading-state">
-            <Spin size="large" tip="Loading tv shows..." />
-          </div>
+          <ImageSkeleton />
         ) : tvShows.length > 0 ? (
           <Cards data={tvShows} link="/tv-shows" />
         ) : (

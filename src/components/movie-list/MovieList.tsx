@@ -14,7 +14,7 @@ import type { Movie } from "../../types/movie";
 import ThemeBreadcrumb from "../theme-breadcrumb/ThemeBreadcrumb";
 import { Link } from "react-router-dom";
 import Cards from "../cards/Cards";
-import Rect from "../skeletons/ImageSkeleton";
+import ImageSkeleton from "../skeletons/ImageSkeleton";
 
 const categoryOptions = [
   { value: "popular", label: "Popular" },
@@ -50,7 +50,7 @@ export default function MovieList() {
     <div className="movies-list">
       <ThemeBreadcrumb />
       <div className="list-heading">
-        <h3 className="heading-3">Browse Movies</h3>
+        <h2 className="heading-2 border-bottom">Browse Movies</h2>
         <Select
           showSearch
           style={{ width: 250, height: 50 }}
@@ -68,7 +68,7 @@ export default function MovieList() {
       </div>
 
       {loading ? (
-        <Rect />
+        <ImageSkeleton />
       ) : movies.length > 0 ? (
         <Cards data={movies} link="/movies" />
       ) : (

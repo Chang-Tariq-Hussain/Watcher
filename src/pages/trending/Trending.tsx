@@ -35,6 +35,9 @@ export default function Trending() {
   return (
     <div className="trending container">
       <ThemeBreadcrumb title="Trending" />
+      <h2 className="heading-2 border-bottom" style={{ margin: "2rem 0" }}>
+        Trending
+      </h2>
 
       {loading ? (
         <div className="loading-state">

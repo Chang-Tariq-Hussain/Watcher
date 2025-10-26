@@ -4,7 +4,9 @@ export default function Collection() {
   return (
     <div className="collections container">
       <ThemeBreadcrumb title="Collections" />
-      <h1>Collections</h1>
+      <h2 className="heading-2 border-bottom" style={{ margin: "2rem 0" }}>
+        Collection
+      </h2>
     </div>
   );
 }

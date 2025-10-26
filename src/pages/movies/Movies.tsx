@@ -5,7 +5,9 @@ export default function Movies() {
   return (
     <div className="movies container">
       <ThemeBreadcrumb title="Movies" />
-      <h1>Movies</h1>
+      <h2 className="heading-2 border-bottom" style={{ margin: "2rem 0" }}>
+        Movies
+      </h2>
     </div>
   );
 }

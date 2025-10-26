@@ -108,6 +108,21 @@ p {
   color: var(--black-75);
 }
 
+.border-bottom{
+  border-bottom:1px solid var(--black-10);
+  width:50%;
+  padding:5px 0;
+  position:relative;
+  &::after{
+    content: '';
+    position:absolute;
+    bottom:0;
+    left:0;
+    height:4px;
+    width:inherit;
+    background-color:var(--primary-color);
+  }
+}
 /* =========================
    LAYOUT HELPERS
    ========================= */

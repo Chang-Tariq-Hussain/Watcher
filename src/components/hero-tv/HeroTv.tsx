@@ -8,14 +8,16 @@ import "swiper/swiper.css";
 import { IMAGE_BASE } from "../../utils/contant";
 import { getTvShowsByCategory } from "../../api/tv-shows";
 import type { TvShow } from "../../types/tvShows";
+import HomepageSkeleton from "../skeletons/homage/HomepageSkeleton";
 
 export default function HeroTv() {
   const [nowPlayingTvShows, setNowPlayingTvShows] = useState<TvShow[]>([]);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     const fetchNowPlayingTvSeries = async () => {
+      setLoading(true);
       const data = await getTvShowsByCategory("on_the_air", 1);
-      console.log("data>>>", data);
       const tvShows = data?.results || [];
 
       // Preload images to prevent flickering
@@ -25,6 +27,7 @@ export default function HeroTv() {
       // });
 
       setNowPlayingTvShows(tvShows);
+      setLoading(false);
     };
 
     fetchNowPlayingTvSeries();
@@ -47,7 +50,8 @@ export default function HeroTv() {
       }}
       speed={1000} // Smooth transition duration
     >
-      {nowPlayingTvShows.length > 0 ? (
+      {!loading ? (
+        nowPlayingTvShows.length > 0 &&
         nowPlayingTvShows.map((tvShow) => (
           <SwiperSlide key={tvShow.id}>
             <div
@@ -91,9 +95,7 @@ export default function HeroTv() {
         ))
       ) : (
         <SwiperSlide>
-          <div className="hero-section" style={{ background: "#000" }}>
-            <p>Loading...</p> {/* Fallback UI while tv shows load */}
-          </div>
+          <HomepageSkeleton />
         </SwiperSlide>
       )}
     </Swiper>
