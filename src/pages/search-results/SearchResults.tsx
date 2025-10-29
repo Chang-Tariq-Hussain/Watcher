@@ -29,71 +29,77 @@ export default function SearchResults() {
     dispatch(setPage(pageNumber));
   };
 
-  const filteredResults = results.filter((it) => it.media_type !== "person");
+  const filteredResults = results.filter(
+    (it) =>
+      it.media_type !== "person" &&
+      it.poster_path !== null &&
+      it.backdrop_path !== null
+  );
   console.log("totalPages", totalPages);
   return (
     <div className="search-results">
       <ThemeBreadcrumb title={`Search results for ${query}`} />
+      <div className="movie-cards">
+        {filteredResults.map((result: MultiSearchResult) => {
+          console.log("result", result);
+          const title =
+            result.media_type === "movie"
+              ? result.title
+              : result.media_type === "tv"
+              ? result.name
+              : result.media_type === "person"
+              ? result.name
+              : "Unknown";
 
-      {filteredResults.map((result: MultiSearchResult) => {
-        const title =
-          result.media_type === "movie"
-            ? result.title
-            : result.media_type === "tv"
-            ? result.name
-            : result.media_type === "person"
-            ? result.name
-            : "Unknown";
+          const overview =
+            result.media_type === "movie" || result.media_type === "tv"
+              ? result.overview ?? ""
+              : "";
 
-        const overview =
-          result.media_type === "movie" || result.media_type === "tv"
-            ? result.overview ?? ""
-            : "";
+          const poster =
+            result.media_type === "person"
+              ? result.profile_path ?? null
+              : result.poster_path ?? null;
 
-        const poster =
-          result.media_type === "person"
-            ? result.profile_path ?? null
-            : result.poster_path ?? null;
+          const link =
+            result.media_type === "person"
+              ? `/person/${result.id}`
+              : `/movies/${result.id}`;
 
-        const link =
-          result.media_type === "person"
-            ? `/person/${result.id}`
-            : `/movies/${result.id}`;
-
-        return (
-          <div>
-            {loading ? (
-              <div className="movie-cards">
+          if (loading) {
+            return (
+              <>
                 {Array.from({ length: 20 }).map((_, index) => (
                   <ImageSkeleton />
                 ))}
-              </div>
-            ) : filteredResults.length > 0 ? (
-              <div className="movie-cards">
-                <Link to={link}>
-                  <Card
-                    key={result.id}
-                    // title={title}
-                    overview={overview}
-                    poster={poster}
-                  />
-                </Link>
-              </div>
-            ) : (
-              <Empty description="No movies found" />
-            )}
-          </div>
-        );
-      })}
-      <div className="pagination">
-        <Pagination
-          current={page}
-          total={totalPages}
-          pageSize={20}
-          onChange={handlePageChange}
-          showSizeChanger={false}
-        />
+              </>
+            );
+          } else if (filteredResults.length > 0) {
+            return (
+              <Link to={link}>
+                <Card
+                  key={result.id}
+                  // title={title}
+                  overview={overview}
+                  poster={poster}
+                />
+              </Link>
+            );
+          }
+        })}
       </div>
+      {filteredResults.length === 0 && <Empty description="No movies found" />}
+      {filteredResults.length > 0 && (
+        <div className="pagination">
+          <Pagination
+            current={page}
+            total={totalPages}
+            pageSize={20}
+            onChange={handlePageChange}
+            showSizeChanger={false}
+          />
+        </div>
+      )}
     </div>
   );
 }

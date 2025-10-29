@@ -9,9 +9,9 @@ export const getMoviesByCategory = async(category: string, page=1) => {
     }
 }
 
-export const getPopularMovies = async() => {
+export const getPopularMovies = async(page: number) => {
     try {
-        const response = await tmdb.get('/movie/popular')
+        const response = await tmdb.get(`/movie/popular?page=${page}`)
         return response.data;
     } catch (error) {
         console.log("error >>>", error);
