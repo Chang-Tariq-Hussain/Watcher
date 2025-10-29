@@ -1,11 +1,12 @@
 import "./navbar.scss";
-import { useSelector } from "react-redux";
-import type { RootState } from "../../redux/store/store";
+import { useDispatch, useSelector } from "react-redux";
+import type { AppDispatch, RootState } from "../../redux/store/store";
 import { useEffect, useState } from "react";
 import { getTopRatedMovies } from "../../api/movie-api";
 import type { Movie, MovieListResponse } from "../../types/movie";
 import { IMAGE_BASE } from "../../utils/contant";
 import { Link } from "react-router-dom";
+import { toggleSidebar } from "../../redux/features/ui/uiSlice";
 
 export const mainMenuItems = [
   { icon: "fa-compass", label: "Browse", link: "/" },
@@ -18,7 +19,7 @@ export const mainMenuItems = [
 export default function Navbar() {
   const { isSidebarOpen } = useSelector((state: RootState) => state.ui);
   const [topRatedMovies, setTopRatedMovies] = useState<Movie[]>([]);
-
+  const dispatch = useDispatch<AppDispatch>();
   useEffect(() => {
     const fetchTopRatedMovies = async () => {
       const response: MovieListResponse = await getTopRatedMovies();
@@ -31,7 +32,7 @@ export default function Navbar() {
 
   return (
     <div className={`navbar ${isSidebarOpen ? "collapsed" : ""}`}>
-      <div className="logo-container">
+      <div className="logo-container items-center">
         <h1 className="logo items-center">
           {isSidebarOpen ? (
             <div className="logo-icon">
@@ -44,6 +45,12 @@ export default function Navbar() {
             </>
           )}
         </h1>
+        <button
+          className={`close-btn`}
+          onClick={() => dispatch(toggleSidebar())}
+        >
+          <i className="ri-close-large-line"></i>
+        </button>
       </div>
 
       <div className="main-menu">
@@ -63,7 +70,7 @@ export default function Navbar() {
         </ul>
       </div>
 
-      <div className="top-rated">
+      {/* <div className="top-rated">
         <p className="small">Top Rated</p>
         <div className="top-rated-list">
           {topRatedMovies.slice(0, 3)?.map((topRatedMovie) => (
@@ -73,7 +80,7 @@ export default function Navbar() {
             </div>
           ))}
         </div>
-      </div>
+      </div> */}
     </div>
   );
 }

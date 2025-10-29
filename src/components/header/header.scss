@@ -1,73 +1,79 @@
-
-/* Header */
-.header{
-  padding:var(--container-padding);
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
+.header {
+  padding: var(--container-padding);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   border-bottom: 1px solid var(--black-10);
-  height:100px;
+  min-height: 100px;
+
+  .header-right {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+
+    i {
+      &.ri-notification-4-line {
+        position: relative;
+
+        &::after {
+          content: "";
+          position: absolute;
+          top: -3px;
+          right: 1px;
+          width: 6px;
+          height: 6px;
+          background: #e23232; // red dot
+          border-radius: 50%;
+          border: 2px solid var(--gradient-dark);
+        }
+      }
+    }
+
+    form {
+      border: 1px solid var(--black-10);
+      border-radius: 8px;
+      padding: 0 8px;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      width: 300px;
+
+      input {
+        background: transparent;
+        border: none;
+        color: var(--black-75);
+        width: 100%;
+        height: 40px;
+
+        &:focus {
+          outline: none;
+        }
+
+        &::placeholder {
+          padding-left: 15px;
+        }
+      }
+
+      i {
+        color: var(--black-75);
+      }
+    }
+  }
+
+  .theme-btn {
+    background: transparent;
+    color: var(--black);
+
+    &:hover {
+      border: none;
+    }
+  }
 }
 
-.header-right{
-  display:flex;
-  align-items:center;
-  gap:2rem;
-}
-
-/* Make sure only the notification icon gets the dot */
-.header-right > i.ri-notification-4-line {
-  position: relative;
-}
-
-/* Red dot indicator */
-.header-right > i.ri-notification-4-line::after {
-  content: "";
-  position: absolute;
-  top: -3px;       /* adjust as needed */
-  right: 1px;     /* adjust as needed */
-  width: 6px;      /* size of the dot */
-  height: 6px;
-  background: #e23232;  /* red color */
-  border-radius: 50%;
-  border: 2px solid var(--gradient-dark); /* optional, creates neat border */
-}
-
-.header-right form{
-  border:1px solid var(--black-10);
-  border-radius:8px;
-  padding:0 8px;
-  display:flex;
-  align-items:center;
-  gap:0.5rem;
-  width:300px;
-}
-
-.header-right form input{
-  background:transparent;
-  border:none;
-  color:var(--black-75);
-  width:100%;
-  height:40px;
-}
-
-.header-right form input:focus{
-  outline:none;
-}
-
-.header-right form input::placeholder{
-  padding-left:15px;
-}
-
-.header-right form i{
-  color:var(--black-75);
-}
-
-.theme-btn{
-  background:transparent;
-  color:var(--black);
-  
-  &:hover{
-    border:none;
+@media (max-width: 768px) {
+  .header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
   }
 }

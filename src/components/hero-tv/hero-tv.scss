@@ -1,7 +1,7 @@
 /* Swiper Container */
 .mySwiper {
   width: 100%;
-  height: 90vh; /* Match hero-section height */
+  height: 90vh; /* Match hero-section-tv height */
   position: relative;
 
   .swiper-slide {
@@ -11,7 +11,7 @@
 }
 
 /* Hero Section */
-.hero-section {
+.hero-section-tv {
   position: relative;
   width: 100%;
   height: 100vh; /* Consistent with .mySwiper */
@@ -28,12 +28,12 @@
 }
 
 /* Overlay for gradient effect */
-.hero-section::before {
+.hero-section-tv::before {
   content: "";
   position: absolute;
   top: 0;
   left: 0;
-  width: 70%; /* Adjust overlay width */
+  width: 80%; /* Adjust overlay width */
   height: 100%; /* Covers vertically */
   background: linear-gradient(
     to right,
@@ -47,14 +47,14 @@
 }
 
 /* Ensure all content stays above overlay */
-.hero-section > * {
+.hero-section-tv > * {
   position: relative;
   z-index: 2;
   margin: 2rem 0;
 }
 
 /* Live Tag */
-.hero-section .live-tag {
+.hero-section-tv .live-tag {
   display: flex;
   align-items: center;
   gap: 5px;
@@ -70,19 +70,21 @@
 }
 
 /* Overview */
-.hero-section .overview {
-  width: 60%;
-  color: #b9b9b9 !important;
+.hero-section-tv {
+  .overview {
+    width: 60%;
+    color: #b9b9b9 !important;
+  }
 }
 
 /* Info Section */
-.hero-section .info {
+.hero-section-tv .info {
   display: flex;
   gap: 2rem;
 }
 
-.hero-section .info .rating,
-.hero-section .info .language {
+.hero-section-tv .info .rating,
+.hero-section-tv .info .language {
   display: flex;
   align-items: center;
   gap: 10px;
@@ -144,5 +146,85 @@
   .custom-bullet-active {
     background: #e50914; // Netflix red style
     transform: scale(1.3);
+  }
+}
+
+@media (max-width: 1200px) {
+  /* Overview */
+  .hero-section-tv {
+    .overview {
+      width: 65%;
+      // color: #b9b9b9 !important;
+    }
+  }
+  .hero-section-tv > * {
+    margin: 1.8rem 0;
+  }
+
+  /* Hero Section */
+  .hero-section-tv {
+    width: 100%;
+    height: 95vh; /* Consistent with .mySwiper */
+    // background-repeat: no-repeat; /* Prevent background repeat */
+    padding: 2.8rem;
+  }
+}
+
+@media (max-width: 960px) {
+  /* Swiper Container */
+  .mySwiper {
+    width: 100%;
+    min-height: 85vh; /* Match hero-section-tv height */
+  }
+
+  /* Hero Section */
+  .hero-section-tv {
+    width: 100%;
+    height: 95vh; /* Consistent with .mySwiper */
+    // background-repeat: no-repeat; /* Prevent background repeat */
+    padding: 2.6rem;
+  }
+
+  /* Ensure all content stays above overlay */
+  .hero-section-tv > * {
+    margin: 1.6rem 0;
+  }
+
+  /* Live Tag */
+  .hero-section-tv .live-tag {
+    width: fit-content;
+    padding: 4px 8px;
+  }
+
+  /* Overview */
+  .hero-section-tv {
+    .overview {
+      width: 70%;
+      // color: #b9b9b9 !important;
+    }
+  }
+
+  .info .rating img,
+  .info .language img {
+    width: 38px; /* Consistent size for rating/language images */
+    height: 38px;
+  }
+
+  /* Watch Button */
+  .watch-btn {
+    padding: 14px 22px;
+  }
+
+  .hero-swiper {
+    height: 90vh;
+
+    .custom-bullet {
+      width: 8px;
+      height: 8px;
+    }
+
+    .custom-bullet-active {
+      transform: scale(1.2);
+    }
   }
 }

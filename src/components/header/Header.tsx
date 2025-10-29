@@ -64,7 +64,6 @@ export default function Header() {
             onChange={(e) => setSearchKeyword(e.target.value)}
           />
         </form>
-
         <i className="ri-notification-4-line ri-lg"></i>
         <button className="theme-btn" onClick={handleToggleTheme}>
           <i
