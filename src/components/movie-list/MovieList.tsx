@@ -46,6 +46,8 @@ export default function MovieList() {
     dispatch(setPage(pageNumber));
   };
 
+  console.log("movies", movies);
+
   return (
     <div className="movies-list">
       <ThemeBreadcrumb />

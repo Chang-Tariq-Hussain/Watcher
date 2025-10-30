@@ -19,7 +19,6 @@ export default function SearchResults() {
   const dispatch = useDispatch<AppDispatch>();
 
   useEffect(() => {
-    console.log("Resuls", results);
     if (!query) {
       navigate("/");
     }
@@ -35,21 +34,13 @@ export default function SearchResults() {
       it.poster_path !== null &&
       it.backdrop_path !== null
   );
-  console.log("totalPages", totalPages);
+
   return (
     <div className="search-results">
       <ThemeBreadcrumb title={`Search results for ${query}`} />
       <div className="movie-cards">
         {filteredResults.map((result: MultiSearchResult) => {
           console.log("result", result);
-          const title =
-            result.media_type === "movie"
-              ? result.title
-              : result.media_type === "tv"
-              ? result.name
-              : result.media_type === "person"
-              ? result.name
-              : "Unknown";
 
           const overview =
             result.media_type === "movie" || result.media_type === "tv"
