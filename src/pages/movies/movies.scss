@@ -1,39 +1,13 @@
-.tv-shows-list .list-heading {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 1rem;
-  // margin-bottom: 2rem;
-}
-
-.tv-shows-list {
+.movies {
   padding: 2rem 3rem;
 }
 
-.tv-shows {
-  .ant-select {
-    .ant-select-selector {
-      background: transparent;
-      border: 1px solid var(--black-10);
-      color: var(--black-75);
-
-      .ant-select-selection-placeholder {
-        color: var(--black);
-      }
-    }
-    .ant-select-arrow {
-      color: var(--black-50);
-    }
-  }
-}
-
 @media screen and (min-width: 1200px) and (max-width: 1399px) {
-  .tv-shows-list {
+  .movies {
     padding: 1.8rem 2.8rem;
   }
 
-  .tv-shows-list .list-heading {
+  .movies .list-heading {
     margin-bottom: 1.8rem;
   }
 
@@ -41,13 +15,17 @@
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
     gap: 1rem;
   }
+
+  .pagination {
+    margin-top: 1.8rem;
+  }
 }
 @media screen and (min-width: 992px) and (max-width: 1199px) {
-  .tv-shows-list {
+  .movies {
     padding: 1.6rem 2.6rem;
   }
 
-  .tv-shows-list .list-heading {
+  .movies .list-heading {
     margin-bottom: 1.6rem;
   }
 
@@ -55,13 +33,17 @@
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
     gap: 1rem;
   }
+
+  .pagination {
+    margin-top: 1.6rem;
+  }
 }
 @media screen and (min-width: 768px) and (max-width: 991px) {
-  .tv-shows-list {
+  .movies {
     padding: 1.4rem 2.4rem;
   }
 
-  .tv-shows-list .list-heading {
+  .movies .list-heading {
     margin-bottom: 1.4rem;
   }
 
@@ -69,13 +51,17 @@
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
     gap: 1rem;
   }
+
+  .pagination {
+    margin-top: 1.4rem;
+  }
 }
 @media screen and (min-width: 576px) and (max-width: 767px) {
-  .tv-shows-list {
+  .movies {
     padding: 1.2rem 2.2rem;
   }
 
-  .tv-shows-list .list-heading {
+  .movies .list-heading {
     margin-bottom: 1.2rem;
   }
 
@@ -83,18 +69,26 @@
     grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
     gap: 1rem;
   }
+
+  .pagination {
+    margin-top: 1.2rem;
+  }
 }
 @media screen and (max-width: 576px) {
-  .tv-shows-list {
+  .movies {
     padding: 0.8rem 1.8rem;
   }
 
-  .tv-shows-list .list-heading {
+  .movies .list-heading {
     margin-bottom: 1rem;
   }
 
   .movie-cards {
     grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
     gap: 1rem;
+  }
+
+  .pagination {
+    margin-top: 1rem;
   }
 }

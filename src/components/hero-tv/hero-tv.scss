@@ -172,6 +172,19 @@
 
 @media (max-width: 960px) {
   /* Swiper Container */
+}
+
+@media screen and (min-width: 1200px) and (max-width: 1399px) {
+}
+@media screen and (min-width: 992px) and (max-width: 1199px) {
+  .hero-section-tv {
+    width: 100%;
+    height: 95vh; /* Consistent with .mySwiper */
+    // background-repeat: no-repeat; /* Prevent background repeat */
+    padding: 2.8rem;
+  }
+}
+@media screen and (min-width: 768px) and (max-width: 991px) {
   .mySwiper {
     width: 100%;
     min-height: 85vh; /* Match hero-section-tv height */
@@ -182,7 +195,7 @@
     width: 100%;
     height: 95vh; /* Consistent with .mySwiper */
     // background-repeat: no-repeat; /* Prevent background repeat */
-    padding: 2.6rem;
+    padding: 2.4rem;
   }
 
   /* Ensure all content stays above overlay */
@@ -226,5 +239,23 @@
     .custom-bullet-active {
       transform: scale(1.2);
     }
+  }
+}
+@media screen and (min-width: 576px) and (max-width: 767px) {
+  /* Hero Section */
+  .hero-section-tv {
+    width: 100%;
+    height: 95vh; /* Consistent with .mySwiper */
+    // background-repeat: no-repeat; /* Prevent background repeat */
+    padding: 2rem;
+  }
+}
+@media screen and (max-width: 576px) {
+  /* Hero Section */
+  .hero-section-tv {
+    width: 100%;
+    height: 95vh; /* Consistent with .mySwiper */
+    // background-repeat: no-repeat; /* Prevent background repeat */
+    padding: 1.6rem;
   }
 }

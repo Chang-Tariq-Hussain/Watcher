@@ -55,7 +55,6 @@ export default function MovieList() {
         <h2 className="heading-2 border-bottom">Browse Movies</h2>
         <Select
           showSearch
-          style={{ width: 250, height: 50 }}
           placeholder="Select Category"
           defaultValue={category}
           onChange={handleCategoryChange}

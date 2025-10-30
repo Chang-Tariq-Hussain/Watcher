@@ -5,6 +5,7 @@ import type { TvShow } from "../../types/tvShows";
 import type { Movie } from "../../types/movie";
 import { Empty, Pagination, Spin } from "antd";
 import Cards from "../../components/cards/Cards";
+import "./trending.scss";
 
 export default function Trending() {
   const [page, setPage] = useState(1);

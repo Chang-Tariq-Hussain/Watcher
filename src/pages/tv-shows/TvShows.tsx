@@ -72,16 +72,15 @@ export default function TvShows() {
         ) : (
           <Empty description="No tv shows found" />
         )}
-      </div>
-
-      <div className="pagination">
-        <Pagination
-          current={page}
-          total={totalPages}
-          pageSize={1}
-          onChange={handlePageChange}
-          showSizeChanger={false}
-        />
+        <div className="pagination">
+          <Pagination
+            current={page}
+            total={totalPages}
+            pageSize={1}
+            onChange={handlePageChange}
+            showSizeChanger={false}
+          />
+        </div>
       </div>
     </div>
   );

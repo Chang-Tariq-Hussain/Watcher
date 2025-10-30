@@ -5,6 +5,7 @@ import { getPopularMovies } from "../../api/movie-api";
 import ImageSkeleton from "../../components/skeletons/ImageSkeleton";
 import Cards from "../../components/cards/Cards";
 import { Empty, Pagination } from "antd";
+import "./movies.scss";
 
 export default function Movies() {
   const [movies, setMovies] = useState<Movie[]>([]);

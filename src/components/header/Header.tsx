@@ -64,20 +64,22 @@ export default function Header() {
             onChange={(e) => setSearchKeyword(e.target.value)}
           />
         </form>
-        <i className="ri-notification-4-line ri-lg"></i>
-        <button className="theme-btn" onClick={handleToggleTheme}>
-          <i
-            className={`${
-              theme === "light" ? "ri-moon-line" : "ri-sun-line"
-            } ri-lg`}
-          ></i>
-        </button>
-        <div className="avatar">
-          <img
-            src="https://static.vecteezy.com/system/resources/previews/024/183/525/non_2x/avatar-of-a-man-portrait-of-a-young-guy-illustration-of-male-character-in-modern-color-style-vector.jpg"
-            alt="avatar"
-            className="avatar-img"
-          />
+        <div className="items-center">
+          <i className="ri-notification-4-line ri-lg"></i>
+          <button className="theme-btn" onClick={handleToggleTheme}>
+            <i
+              className={`${
+                theme === "light" ? "ri-moon-line" : "ri-sun-line"
+              } ri-lg`}
+            ></i>
+          </button>
+          <div className="avatar">
+            <img
+              src="https://static.vecteezy.com/system/resources/previews/024/183/525/non_2x/avatar-of-a-man-portrait-of-a-young-guy-illustration-of-male-character-in-modern-color-style-vector.jpg"
+              alt="avatar"
+              className="avatar-img"
+            />
+          </div>
         </div>
       </div>
     </div>
