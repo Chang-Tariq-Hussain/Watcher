@@ -53,8 +53,8 @@ export default function SearchResults() {
               : result.poster_path ?? null;
 
           const link =
-            result.media_type === "person"
-              ? `/person/${result.id}`
+            result.media_type === "tv"
+              ? `/tv/${result.id}`
               : `/movies/${result.id}`;
 
           if (loading) {
