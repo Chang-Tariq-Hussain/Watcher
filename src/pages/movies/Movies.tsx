@@ -4,7 +4,7 @@ import type { Movie } from "../../types/movie";
 import { getPopularMovies } from "../../api/movie-api";
 import ImageSkeleton from "../../components/skeletons/ImageSkeleton";
 import Cards from "../../components/cards/Cards";
-import { Empty, Pagination } from "antd";
+import { Pagination } from "antd";
 import "./movies.scss";
 
 export default function Movies() {
@@ -36,10 +36,8 @@ export default function Movies() {
 
       {loading ? (
         <ImageSkeleton />
-      ) : movies.length > 0 ? (
-        <Cards data={movies} link={"/movies"} />
       ) : (
-        <Empty description="No tv shows found" />
+        <Cards data={movies} link={"/movies"} description="No tv shows found" />
       )}
 
       <div className="pagination">

@@ -1,7 +1,7 @@
 import { Link, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import ThemeBreadcrumb from "../../components/theme-breadcrumb/ThemeBreadcrumb";
-import { Tabs } from "antd";
+import { Empty, Tabs } from "antd";
 import type { TabsProps } from "antd";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper/modules";
@@ -26,6 +26,7 @@ import {
   getTvShowVideosById,
   getSimilarTvShows,
 } from "../../api/tv-shows"; // <-- create this file similar to movie-api
+import Cards from "../../components/cards/Cards";
 
 export default function MediaDetail() {
   const { id, type } = useParams<{ id: string; type: "movies" | "tv" }>();
@@ -106,9 +107,11 @@ export default function MediaDetail() {
           <div className="related">
             <div className="flex-between">
               <p>Related {type === "movies" ? "Movies" : "Shows"}</p>
-              <Link to={`/${type}`} style={{ marginRight: "10px" }}>
-                See more
-              </Link>
+              {related && related.length > 0 && (
+                <Link to={`/${type}`} style={{ marginRight: "10px" }}>
+                  See more
+                </Link>
+              )}
             </div>
             <Swiper
               slidesPerView={2.3}
@@ -117,25 +120,29 @@ export default function MediaDetail() {
               modules={[Navigation]}
               className="relatedSwiper"
             >
-              {related?.slice(0, 4).map((r) => (
-                <SwiperSlide key={r.id} style={{ position: "relative" }}>
-                  <img
-                    src={`${IMAGE_BASE}/${r.poster_path}`}
-                    alt={("title" in r ? r.title : r.name) || ""}
-                    // style={{ height: "100%" }}
-                  />
-                  <p
-                    style={{
-                      position: "absolute",
-                      left: "10px",
-                      bottom: -10,
-                      textShadow: "1px 2px 3px #000",
-                    }}
-                  >
-                    {"title" in r ? r.title : r.name}
-                  </p>
-                </SwiperSlide>
-              ))}
+              {related && related.length > 0 ? (
+                related?.slice(0, 4).map((r) => (
+                  <SwiperSlide key={r.id} style={{ position: "relative" }}>
+                    <img
+                      src={`${IMAGE_BASE}/${r.poster_path}`}
+                      alt={("title" in r ? r.title : r.name) || ""}
+                      // style={{ height: "100%" }}
+                    />
+                    <p
+                      style={{
+                        position: "absolute",
+                        left: "10px",
+                        bottom: -10,
+                        textShadow: "1px 2px 3px #000",
+                      }}
+                    >
+                      {"title" in r ? r.title : r.name}
+                    </p>
+                  </SwiperSlide>
+                ))
+              ) : (
+                <Empty description={"No related movie/tv found"} />
+              )}
             </Swiper>
           </div>
         </div>
@@ -161,15 +168,22 @@ export default function MediaDetail() {
         </div>
       ),
     },
+    // {
+    //   key: "3",
+    //   label: "MORE LIKE THIS",
+    //   children: (
+    //     <div className="grid-related">
+    //       {related?.map((related) => (
+    //         <img src={`${IMAGE_BASE}/${related?.poster_path}`} alt="" />
+    //       ))}{" "}
+    //     </div>
+    //   ),
+    // },
     {
       key: "3",
       label: "MORE LIKE THIS",
       children: (
-        <div className="grid-related">
-          {related?.map((related) => (
-            <img src={`${IMAGE_BASE}/${related?.poster_path}`} alt="" />
-          ))}{" "}
-        </div>
+        <Cards data={related || []} description="No related movie/tv found" />
       ),
     },
     {

@@ -67,10 +67,12 @@ export default function TvShows() {
 
         {loading ? (
           <ImageSkeleton />
-        ) : tvShows.length > 0 ? (
-          <Cards data={tvShows} link="/tv-shows" />
         ) : (
-          <Empty description="No tv shows found" />
+          <Cards
+            data={tvShows}
+            link="/tv-shows"
+            description="No tv shows found"
+          />
         )}
         <div className="pagination">
           <Pagination

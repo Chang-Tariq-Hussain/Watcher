@@ -56,7 +56,7 @@ export default function Hero() {
               style={{
                 backgroundImage: `url('${IMAGE_BASE}/${movie.backdrop_path}')`,
                 backgroundSize: "cover",
-                backgroundPosition: "top center",
+                backgroundPosition: "center",
                 transition: "background-image 0.5s ease-in-out", // Smooth transition
               }}
             >

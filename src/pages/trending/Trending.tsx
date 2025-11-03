@@ -44,10 +44,8 @@ export default function Trending() {
         <div className="loading-state">
           <Spin size="large" tip="Loading tv shows..." />
         </div>
-      ) : allTrending.length > 0 ? (
-        <Cards data={allTrending} />
       ) : (
-        <Empty description="No tv shows found" />
+        <Cards data={allTrending} description="No tv shows found" />
       )}
 
       <div className="pagination">

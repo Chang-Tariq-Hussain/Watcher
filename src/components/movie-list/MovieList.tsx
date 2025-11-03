@@ -70,10 +70,8 @@ export default function MovieList() {
 
       {loading ? (
         <ImageSkeleton />
-      ) : movies.length > 0 ? (
-        <Cards data={movies} link="/movies" />
       ) : (
-        <Empty description="No movies found" />
+        <Cards data={movies} link="/movies" description="No movies found" />
       )}
 
       <div className="pagination">
