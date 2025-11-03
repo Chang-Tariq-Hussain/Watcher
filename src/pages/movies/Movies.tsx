@@ -37,7 +37,7 @@ export default function Movies() {
       {loading ? (
         <ImageSkeleton />
       ) : movies.length > 0 ? (
-        <Cards data={movies} />
+        <Cards data={movies} link={"/movies"} />
       ) : (
         <Empty description="No tv shows found" />
       )}

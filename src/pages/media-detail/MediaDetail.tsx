@@ -115,14 +115,14 @@ export default function MediaDetail() {
               loop
               spaceBetween={20}
               modules={[Navigation]}
-              className="mySwiper"
+              className="relatedSwiper"
             >
               {related?.slice(0, 4).map((r) => (
                 <SwiperSlide key={r.id} style={{ position: "relative" }}>
                   <img
                     src={`${IMAGE_BASE}/${r.poster_path}`}
                     alt={("title" in r ? r.title : r.name) || ""}
-                    style={{ height: "100%" }}
+                    // style={{ height: "100%" }}
                   />
                   <p
                     style={{
