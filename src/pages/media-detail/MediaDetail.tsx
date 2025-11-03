@@ -123,21 +123,25 @@ export default function MediaDetail() {
               {related && related.length > 0 ? (
                 related?.slice(0, 4).map((r) => (
                   <SwiperSlide key={r.id} style={{ position: "relative" }}>
-                    <img
-                      src={`${IMAGE_BASE}/${r.poster_path}`}
-                      alt={("title" in r ? r.title : r.name) || ""}
-                      // style={{ height: "100%" }}
-                    />
-                    <p
-                      style={{
-                        position: "absolute",
-                        left: "10px",
-                        bottom: -10,
-                        textShadow: "1px 2px 3px #000",
-                      }}
+                    <Link
+                      to={type === "movies" ? `/movies/${r.id}` : `/tv/${r.id}`}
                     >
-                      {"title" in r ? r.title : r.name}
-                    </p>
+                      <img
+                        src={`${IMAGE_BASE}/${r.poster_path}`}
+                        alt={("title" in r ? r.title : r.name) || ""}
+                        // style={{ height: "100%" }}
+                      />
+                      <p
+                        style={{
+                          position: "absolute",
+                          left: "10px",
+                          bottom: -10,
+                          textShadow: "1px 2px 3px #000",
+                        }}
+                      >
+                        {"title" in r ? r.title : r.name}
+                      </p>
+                    </Link>
                   </SwiperSlide>
                 ))
               ) : (
@@ -253,12 +257,16 @@ export default function MediaDetail() {
             </div>
           </div>
           <div className="subheading">
-            <p className="small">{release?.split("-")[0]}</p>
+            <p className="small">{release?.split("-")[0] || "N/A"}</p>
             {"runtime" in (data || {}) && (
-              <p className="small">{formatRuntime((data as Movie).runtime)}</p>
+              <p className="small">
+                {formatRuntime((data as Movie).runtime) || "N/A"}
+              </p>
             )}
             <p className="small">
-              {(data as Movie)?.status || (detail as TvShowDetail)?.status}
+              {(data as Movie)?.status ||
+                (detail as TvShowDetail)?.status ||
+                "N/A"}
             </p>
           </div>
 
