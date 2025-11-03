@@ -33,7 +33,7 @@
   position: absolute;
   top: 0;
   left: 0;
-  width: 70%; /* Adjust overlay width */
+  width: 80%; /* Adjust overlay width */
   height: 100%; /* Covers vertically */
   background: linear-gradient(
     to right,
@@ -70,9 +70,11 @@
 }
 
 /* Overview */
-.hero-section .overview {
-  width: 60%;
-  color: #b9b9b9 !important;
+.hero-section {
+  .overview {
+    width: 60%;
+    color: #b9b9b9 !important;
+  }
 }
 
 /* Info Section */
@@ -144,5 +146,218 @@
   .custom-bullet-active {
     background: #e50914; // Netflix red style
     transform: scale(1.3);
+  }
+}
+
+// @media (max-width: 1200px) {
+//   /* Overview */
+//   .hero-section {
+//     .overview {
+//       width: 65%;
+//       // color: #b9b9b9 !important;
+//     }
+//   }
+//   .hero-section > * {
+//     margin: 1.8rem 0;
+//   }
+
+//   /* Hero Section */
+//   .hero-section {
+//     width: 100%;
+//     height: 95vh; /* Consistent with .mySwiper */
+//     // background-repeat: no-repeat; /* Prevent background repeat */
+//     padding: 2.8rem;
+//   }
+// }
+
+// @media (max-width: 960px) {
+//   /* Swiper Container */
+//   .mySwiper {
+//     width: 100%;
+//     min-height: 85vh; /* Match hero-section height */
+//   }
+
+//   /* Hero Section */
+//   .hero-section {
+//     width: 100%;
+//     height: 95vh; /* Consistent with .mySwiper */
+//     // background-repeat: no-repeat; /* Prevent background repeat */
+//     padding: 2.6rem;
+//   }
+
+//   /* Ensure all content stays above overlay */
+//   .hero-section > * {
+//     margin: 1.6rem 0;
+//   }
+
+//   /* Live Tag */
+//   .hero-section .live-tag {
+//     width: fit-content;
+//     padding: 4px 8px;
+//   }
+
+//   /* Overview */
+//   .hero-section {
+//     .overview {
+//       width: 70%;
+//       // color: #b9b9b9 !important;
+//     }
+//   }
+
+//   .info .rating img,
+//   .info .language img {
+//     width: 38px; /* Consistent size for rating/language images */
+//     height: 38px;
+//   }
+
+//   /* Watch Button */
+//   .watch-btn {
+//     padding: 14px 22px;
+//   }
+
+//   .hero-swiper {
+//     height: 90vh;
+
+//     .custom-bullet {
+//       width: 8px;
+//       height: 8px;
+//     }
+
+//     .custom-bullet-active {
+//       transform: scale(1.2);
+//     }
+//   }
+// }
+
+@media screen and (min-width: 1200px) and (max-width: 1399px) {
+  .hero-swiper {
+    .hero-section {
+      height: 100vh !important;
+    }
+  }
+}
+@media screen and (min-width: 992px) and (max-width: 1199px) {
+  .hero-swiper {
+    height: 90vh;
+    .hero-section {
+      width: 100%;
+      height: 100vh;
+      padding: 2.8rem;
+
+      .overview {
+        width: 65%;
+      }
+    }
+  }
+}
+@media screen and (min-width: 768px) and (max-width: 991px) {
+  .mySwiper {
+    width: 100%;
+    min-height: 85vh; /* Match hero-section height */
+  }
+
+  .hero-swiper {
+    height: 80vh;
+    .hero-section {
+      width: 100%;
+      height: 90vh; /* Consistent with .mySwiper */
+      // background-repeat: no-repeat; /* Prevent background repeat */
+      padding: 2.4rem;
+    }
+  }
+
+  /* Ensure all content stays above overlay */
+  .hero-section > * {
+    margin: 1.6rem 0;
+  }
+
+  /* Live Tag */
+  .hero-section .live-tag {
+    width: fit-content;
+    padding: 4px 8px;
+  }
+
+  /* Overview */
+  .hero-section {
+    .overview {
+      width: 70%;
+      // color: #b9b9b9 !important;
+    }
+  }
+
+  .info .rating img,
+  .info .language img {
+    width: 38px; /* Consistent size for rating/language images */
+    height: 38px;
+  }
+
+  /* Watch Button */
+  .watch-btn {
+    padding: 14px 22px;
+  }
+
+  .hero-swiper {
+    height: 90vh;
+
+    .custom-bullet {
+      width: 8px;
+      height: 8px;
+    }
+
+    .custom-bullet-active {
+      transform: scale(1.2);
+    }
+  }
+}
+@media screen and (min-width: 576px) and (max-width: 767px) {
+  /* Hero Section */
+  .hero-swiper {
+    height: 60vh;
+    .hero-section {
+      width: 100%;
+      height: 50vh; /* Consistent with .mySwiper */
+      // background-repeat: no-repeat; /* Prevent background repeat */
+      padding: 2rem;
+    }
+  }
+  .scroll-down {
+    position: absolute;
+    bottom: 100px;
+    left: 50%;
+    background: #fff;
+    border-radius: 50%;
+    width: 56px;
+    height: 56px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 3;
+    animation: bounce 2s infinite;
+  }
+}
+@media screen and (max-width: 576px) {
+  /* Hero Section */
+  .hero-swiper {
+    height: 60vh;
+  }
+  .hero-section {
+    width: 100%;
+    height: 60vh; /* Consistent with .mySwiper */
+    // background-repeat: no-repeat; /* Prevent background repeat */
+    padding: 1.6rem;
+  }
+  .scroll-down {
+    position: absolute;
+    bottom: 100px;
+    left: 50%;
+    background: #fff;
+    border-radius: 50%;
+    width: 56px;
+    height: 56px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 3;
+    animation: bounce 2s infinite;
   }
 }

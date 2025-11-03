@@ -43,7 +43,7 @@ export default function TvShows() {
   }, [category, page, dispatch]);
 
   return (
-    <div className="tv-shows">
+    <div className="tv-shows" id="tv-shows">
       <HeroTv />
       <div className="tv-shows-list  container">
         <ThemeBreadcrumb title="Tv Shows" />
@@ -67,21 +67,22 @@ export default function TvShows() {
 
         {loading ? (
           <ImageSkeleton />
-        ) : tvShows.length > 0 ? (
-          <Cards data={tvShows} link="/tv-shows" />
         ) : (
-          <Empty description="No tv shows found" />
+          <Cards
+            data={tvShows}
+            link="/tv-shows"
+            description="No tv shows found"
+          />
         )}
-      </div>
-
-      <div className="pagination">
-        <Pagination
-          current={page}
-          total={totalPages}
-          pageSize={1}
-          onChange={handlePageChange}
-          showSizeChanger={false}
-        />
+        <div className="pagination">
+          <Pagination
+            current={page}
+            total={totalPages}
+            pageSize={1}
+            onChange={handlePageChange}
+            showSizeChanger={false}
+          />
+        </div>
       </div>
     </div>
   );

@@ -3,17 +3,19 @@
   padding: 2rem 3rem;
 
   .ant-select {
+    width: 250px;
+    height: 50px;
     .ant-select-selector {
       background: transparent;
       border: 1px solid var(--black-10);
-      color:var(--black-75);
+      color: var(--black-75);
 
       .ant-select-selection-placeholder {
         color: var(--black);
       }
     }
-    .ant-select-arrow{
-      color:var(--black-50);
+    .ant-select-arrow {
+      color: var(--black-50);
     }
   }
 }
@@ -21,6 +23,8 @@
 .movies-list .list-heading {
   display: flex;
   align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
   justify-content: space-between;
   margin-bottom: 2rem;
 }
@@ -31,18 +35,121 @@
   gap: 1rem;
 }
 
-.pagination{
-  margin-top:2rem;
+.pagination {
+  margin-top: 2rem;
 
-  .ant-pagination{
-    text-align:center;
+  .ant-pagination {
+    text-align: center;
 
-    .ant-pagination-item{
-      background:transparent;
+    .ant-pagination-item {
+      background: transparent;
 
-      a{
-        color:var(--black);
+      a {
+        color: var(--black);
       }
     }
+  }
+}
+
+@media screen and (min-width: 1200px) and (max-width: 1399px) {
+  .movies-list {
+    padding: 1.7rem 2.8rem;
+  }
+
+  .movies-list .list-heading {
+    margin-bottom: 1.8rem;
+  }
+
+  .movie-cards {
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1rem;
+  }
+
+  .pagination {
+    margin-top: 1.8rem;
+  }
+}
+@media screen and (min-width: 992px) and (max-width: 1199px) {
+  .movies-list {
+    padding: 1.4rem 2.8rem;
+  }
+
+  .movies-list .list-heading {
+    margin-bottom: 1.6rem;
+  }
+
+  .movie-cards {
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 0.8rem !important;
+  }
+
+  .pagination {
+    margin-top: 1.6rem;
+  }
+}
+@media screen and (min-width: 768px) and (max-width: 991px) {
+  .movies-list {
+    padding: 1.1rem 2.4rem;
+
+    .ant-select {
+      width: 100%;
+    }
+  }
+
+  .movies-list .list-heading {
+    margin-bottom: 1.4rem;
+  }
+
+  .movie-cards {
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 0.7rem !important;
+  }
+
+  .pagination {
+    margin-top: 1.4rem;
+  }
+}
+@media screen and (min-width: 576px) and (max-width: 767px) {
+  .movies-list {
+    padding: 0.8rem 1.8rem;
+
+    .ant-select {
+      width: 100%;
+    }
+  }
+
+  .movies-list .list-heading {
+    margin-bottom: 1.2rem;
+  }
+
+  .movie-cards {
+    grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+    gap: 0.6rem !important;
+  }
+
+  .pagination {
+    margin-top: 1.2rem;
+  }
+}
+@media screen and (max-width: 576px) {
+  .movies-list {
+    padding: 1rem;
+
+    .ant-select {
+      width: 100%;
+    }
+  }
+
+  .movies-list .list-heading {
+    margin-bottom: 1rem;
+  }
+
+  .movie-cards {
+    grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
+    gap: 0.5rem !important;
+  }
+
+  .pagination {
+    margin-top: 1rem;
   }
 }

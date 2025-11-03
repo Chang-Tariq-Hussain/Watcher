@@ -8,7 +8,7 @@ import Header from "../components/header/Header";
 export default function AppLayout() {
   const { isSidebarOpen } = useSelector((state: RootState) => state.ui);
   return (
-    <div className="container">
+    <div className="app-layout-container">
       <div
         className={`grid-layout ${isSidebarOpen ? "sidebar-collapsed" : ""}`}
       >

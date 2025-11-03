@@ -7,17 +7,23 @@ export interface CardProps {
   poster: string | null;
 }
 
-export default function Card({ overview, poster }: CardProps) {
+export default function Card({ overview, poster, title }: CardProps) {
   const IMAGE_BASE = "https://image.tmdb.org/t/p/w500";
 
-  const showContent =
-    overview.length < 40 ? overview : overview.slice(0, 50) + "...";
   return (
     <div className="movie-card">
       {poster ? (
-        <img src={`${IMAGE_BASE}/${poster}`} alt="movie-image" />
+        <img src={`${IMAGE_BASE}/${poster}`} alt={title} />
       ) : (
-        <ImageSkeleton />
+        <p
+          style={{
+            color: "lightblue",
+            textDecoration: "underline",
+            cursor: "pointer",
+          }}
+        >
+          {title}
+        </p>
       )}
 
       {/* <div className="card-info">

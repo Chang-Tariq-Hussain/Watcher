@@ -46,14 +46,15 @@ export default function MovieList() {
     dispatch(setPage(pageNumber));
   };
 
+  console.log("movies", movies);
+
   return (
-    <div className="movies-list">
+    <div className="movies-list" id="movies-list">
       <ThemeBreadcrumb />
       <div className="list-heading">
         <h2 className="heading-2 border-bottom">Browse Movies</h2>
         <Select
           showSearch
-          style={{ width: 250, height: 50 }}
           placeholder="Select Category"
           defaultValue={category}
           onChange={handleCategoryChange}
@@ -69,10 +70,8 @@ export default function MovieList() {
 
       {loading ? (
         <ImageSkeleton />
-      ) : movies.length > 0 ? (
-        <Cards data={movies} link="/movies" />
       ) : (
-        <Empty description="No movies found" />
+        <Cards data={movies} link="/movies" description="No movies found" />
       )}
 
       <div className="pagination">

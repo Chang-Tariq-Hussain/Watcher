@@ -35,8 +35,4 @@ export const routes = [
     path: "/collections",
     element: <Collection />,
   },
-  {
-    path: "/test",
-    element: <HomepageSkeleton />,
-  },
 ];

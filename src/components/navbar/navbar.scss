@@ -10,7 +10,7 @@
   padding: 1rem var(--container-padding);
   border-right: 1px solid var(--black-25);
   z-index: 100;
-  overflow: scroll;
+  overflow: auto;
   scrollbar-width: 0;
   scrollbar-width: thin;
   scrollbar-color: #e23232 transparent;
@@ -18,8 +18,17 @@
   width: 250px; /* Default width for expanded state */
 }
 
+.navbar .close-btn {
+  background: transparent;
+  color: var(--black);
+}
+
 .navbar.collapsed {
   width: 80px; /* Width for collapsed state */
+}
+
+.navbar.collapsed .close-btn {
+  display: none;
 }
 
 .navbar::-webkit-scrollbar {
@@ -52,12 +61,12 @@
   color: var(--black);
   display: flex;
   align-items: center;
-  margin-top:10px;
+  margin-top: 10px;
 }
 
 .navbar .logo-icon {
-  display:flex;
-  align-items:center;
+  display: flex;
+  align-items: center;
 }
 
 .navbar .logo #dot {
@@ -71,7 +80,7 @@
 /* Main Menu */
 .navbar .main-menu {
   padding: 32px 0;
-  border-bottom: 1px solid var(--black-25);
+  // border-bottom: 1px solid var(--black-25);
 }
 
 .navbar ul {
@@ -100,14 +109,16 @@
   font-size: 14px;
   letter-spacing: 1px;
   text-shadow: 1px 2px 3px var(--black-10);
-  color:white;
+  color: white;
   display: flex;
   align-items: center;
 }
 
 .navbar.collapsed a button {
   justify-content: center; /* Center icons in collapsed state */
-  padding: 20px; 
+  // padding: 20px;
+  width: inherit;
+  height: 44px;
 }
 
 .navbar a button i {
@@ -130,7 +141,6 @@
   color: var(--primary-color);
 }
 
-
 .status {
   width: 5px;
   height: 5px;
@@ -148,32 +158,44 @@
 
 // Top Rated
 
-.top-rated{
-  padding:8px 0;
+.top-rated {
+  padding: 8px 0;
 
-  .top-rated-list{
-    display:flex;
-    flex-direction:column;
-    align-items:space-between;
+  .top-rated-list {
+    display: flex;
+    flex-direction: column;
+    align-items: space-between;
     justify-content: center;
-    gap:10px;
-    margin-top:10px;
+    gap: 10px;
+    margin-top: 10px;
 
-    .movie{
-      display:flex;
-      align-items:center;
-      gap:10px;
+    .movie {
+      display: flex;
+      align-items: center;
+      gap: 10px;
 
-      p{
-        color:var(--black);
+      p {
+        color: var(--black);
       }
 
-      img{
+      img {
         // width:48px;
-        height:36px;
-        object-fit:cover;
-        border-radius:4px;
+        height: 36px;
+        object-fit: cover;
+        border-radius: 4px;
       }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .navbar {
+    position: fixed;
+    width: 250px;
+    background: var(--white);
+
+    &.collapsed {
+      display: none;
     }
   }
 }

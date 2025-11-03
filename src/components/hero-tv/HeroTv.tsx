@@ -9,10 +9,13 @@ import { IMAGE_BASE } from "../../utils/contant";
 import { getTvShowsByCategory } from "../../api/tv-shows";
 import type { TvShow } from "../../types/tvShows";
 import HomepageSkeleton from "../skeletons/homage/HomepageSkeleton";
+import { showChars } from "../../utils/helperFunctions";
+import { useNavigate } from "react-router-dom";
 
 export default function HeroTv() {
   const [nowPlayingTvShows, setNowPlayingTvShows] = useState<TvShow[]>([]);
   const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchNowPlayingTvSeries = async () => {
@@ -37,9 +40,11 @@ export default function HeroTv() {
     <Swiper
       direction="vertical"
       className="hero-swiper"
+      allowTouchMove={false}
+      noSwiping={true}
       modules={[Autoplay, Pagination]} // Enable Autoplay module
       autoplay={{
-        delay: 2000, // 5 seconds delay between slides
+        delay: 5000, // 5 seconds delay between slides
         disableOnInteraction: false, // Continue autoplay after user interaction
       }}
       pagination={{
@@ -55,7 +60,7 @@ export default function HeroTv() {
         nowPlayingTvShows.map((tvShow) => (
           <SwiperSlide key={tvShow.id}>
             <div
-              className="hero-section"
+              className="hero-section-tv"
               style={{
                 backgroundImage: `url('${IMAGE_BASE}/${tvShow.backdrop_path}')`,
                 backgroundSize: "cover",
@@ -69,7 +74,7 @@ export default function HeroTv() {
               </div>
               <div>
                 <h1 className="heading-1">{tvShow.name}</h1>
-                <p className="overview">{tvShow.overview}</p>
+                <p className="overview">{showChars(tvShow.overview, 100)}</p>
               </div>
 
               <div className="info">
@@ -89,7 +94,17 @@ export default function HeroTv() {
                   <p>English</p>
                 </div>
               </div>
-              <button className="watch-btn">Watch</button>
+
+              <button
+                onClick={() => navigate(`/tv/${tvShow.id}`)}
+                className="watch-btn"
+              >
+                Watch
+              </button>
+
+              {/* <a href="#tv-shows" className="scroll-down">
+                <i className="ri-arrow-down-line ri-xl"></i>
+              </a> */}
             </div>
           </SwiperSlide>
         ))

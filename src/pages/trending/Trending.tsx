@@ -5,6 +5,7 @@ import type { TvShow } from "../../types/tvShows";
 import type { Movie } from "../../types/movie";
 import { Empty, Pagination, Spin } from "antd";
 import Cards from "../../components/cards/Cards";
+import "./trending.scss";
 
 export default function Trending() {
   const [page, setPage] = useState(1);
@@ -43,10 +44,8 @@ export default function Trending() {
         <div className="loading-state">
           <Spin size="large" tip="Loading tv shows..." />
         </div>
-      ) : allTrending.length > 0 ? (
-        <Cards data={allTrending} />
       ) : (
-        <Empty description="No tv shows found" />
+        <Cards data={allTrending} description="No tv shows found" />
       )}
 
       <div className="pagination">

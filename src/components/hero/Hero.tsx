@@ -6,10 +6,13 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Pagination } from "swiper/modules";
 import "swiper/swiper.css";
 import HomepageSkeleton from "../skeletons/homage/HomepageSkeleton";
+import { showChars } from "../../utils/helperFunctions";
+import { useNavigate } from "react-router-dom";
 
 export default function Hero() {
   const IMAGE_BASE = "https://image.tmdb.org/t/p/w500";
   const [nowPlayingMovies, setNowPlayingMovies] = useState<Movie[]>([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchNowPlayingMovies = async () => {
@@ -34,7 +37,7 @@ export default function Hero() {
       className="hero-swiper"
       modules={[Autoplay, Pagination]} // Enable Autoplay module
       autoplay={{
-        delay: 2000, // 5 seconds delay between slides
+        delay: 5000, // 5 seconds delay between slides
         disableOnInteraction: false, // Continue autoplay after user interaction
       }}
       pagination={{
@@ -53,7 +56,7 @@ export default function Hero() {
               style={{
                 backgroundImage: `url('${IMAGE_BASE}/${movie.backdrop_path}')`,
                 backgroundSize: "cover",
-                backgroundPosition: "top center",
+                backgroundPosition: "center",
                 transition: "background-image 0.5s ease-in-out", // Smooth transition
               }}
             >
@@ -63,7 +66,7 @@ export default function Hero() {
               </div>
               <div>
                 <h1 className="heading-1">{movie.title}</h1>
-                <p className="overview">{movie.overview}</p>
+                <p className="overview">{showChars(movie.overview, 120)}</p>
               </div>
 
               <div className="info">
@@ -83,7 +86,12 @@ export default function Hero() {
                   <p>English</p>
                 </div>
               </div>
-              <button className="watch-btn">Watch</button>
+              <button
+                className="watch-btn"
+                onClick={() => navigate(`/movies/${movie.id}`)}
+              >
+                Watch
+              </button>
             </div>
           </SwiperSlide>
         ))
