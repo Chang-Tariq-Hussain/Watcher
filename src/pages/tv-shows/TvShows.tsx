@@ -43,7 +43,7 @@ export default function TvShows() {
   }, [category, page, dispatch]);
 
   return (
-    <div className="tv-shows">
+    <div className="tv-shows" id="tv-shows">
       <HeroTv />
       <div className="tv-shows-list  container">
         <ThemeBreadcrumb title="Tv Shows" />

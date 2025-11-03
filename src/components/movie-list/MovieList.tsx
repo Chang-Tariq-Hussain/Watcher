@@ -49,7 +49,7 @@ export default function MovieList() {
   console.log("movies", movies);
 
   return (
-    <div className="movies-list">
+    <div className="movies-list" id="movies-list">
       <ThemeBreadcrumb />
       <div className="list-heading">
         <h2 className="heading-2 border-bottom">Browse Movies</h2>

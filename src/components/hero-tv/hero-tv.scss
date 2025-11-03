@@ -27,6 +27,26 @@
   align-items: flex-start; /* Align content to the left for overlay */
 }
 
+// .scroll-down {
+//   display: none;
+// }
+
+// @keyframes bounce {
+//   0%,
+//   20%,
+//   50%,
+//   80%,
+//   100% {
+//     transform: translateY(0);
+//   }
+//   40% {
+//     transform: translateY(-18px);
+//   }
+//   60% {
+//     transform: translateY(-9px);
+//   }
+// }
+
 /* Overlay for gradient effect */
 .hero-section-tv::before {
   content: "";
@@ -47,7 +67,7 @@
 }
 
 /* Ensure all content stays above overlay */
-.hero-section-tv > * {
+.hero-section-tv > *:not(.scroll-down) {
   position: relative;
   z-index: 2;
   margin: 2rem 0;
@@ -149,39 +169,31 @@
   }
 }
 
-@media (max-width: 1200px) {
-  /* Overview */
-  .hero-section-tv {
-    .overview {
-      width: 65%;
-      // color: #b9b9b9 !important;
-    }
-  }
-  .hero-section-tv > * {
-    margin: 1.8rem 0;
-  }
-
-  /* Hero Section */
-  .hero-section-tv {
-    width: 100%;
-    height: 95vh; /* Consistent with .mySwiper */
-    // background-repeat: no-repeat; /* Prevent background repeat */
-    padding: 2.8rem;
-  }
-}
-
-@media (max-width: 960px) {
-  /* Swiper Container */
-}
+// @media (max-width: 960px) {
+//   .hero-section-tv {
+//     height: 80vh !important;
+//   }
+// }
 
 @media screen and (min-width: 1200px) and (max-width: 1399px) {
+  .hero-swiper {
+    .hero-section-tv {
+      height: 100vh !important;
+    }
+  }
 }
 @media screen and (min-width: 992px) and (max-width: 1199px) {
-  .hero-section-tv {
-    width: 100%;
-    height: 95vh; /* Consistent with .mySwiper */
-    // background-repeat: no-repeat; /* Prevent background repeat */
-    padding: 2.8rem;
+  .hero-swiper {
+    height: 90vh;
+    .hero-section-tv {
+      width: 100%;
+      height: 100vh;
+      padding: 2.8rem;
+
+      .overview {
+        width: 65%;
+      }
+    }
   }
 }
 @media screen and (min-width: 768px) and (max-width: 991px) {
@@ -190,12 +202,14 @@
     min-height: 85vh; /* Match hero-section-tv height */
   }
 
-  /* Hero Section */
-  .hero-section-tv {
-    width: 100%;
-    height: 95vh; /* Consistent with .mySwiper */
-    // background-repeat: no-repeat; /* Prevent background repeat */
-    padding: 2.4rem;
+  .hero-swiper {
+    height: 80vh;
+    .hero-section-tv {
+      width: 100%;
+      height: 90vh; /* Consistent with .mySwiper */
+      // background-repeat: no-repeat; /* Prevent background repeat */
+      padding: 2.4rem;
+    }
   }
 
   /* Ensure all content stays above overlay */
@@ -243,19 +257,53 @@
 }
 @media screen and (min-width: 576px) and (max-width: 767px) {
   /* Hero Section */
-  .hero-section-tv {
-    width: 100%;
-    height: 95vh; /* Consistent with .mySwiper */
-    // background-repeat: no-repeat; /* Prevent background repeat */
-    padding: 2rem;
+  .hero-swiper {
+    height: 60vh;
+    .hero-section-tv {
+      width: 100%;
+      height: 50vh; /* Consistent with .mySwiper */
+      // background-repeat: no-repeat; /* Prevent background repeat */
+      padding: 2rem;
+    }
   }
+  // .scroll-down {
+  //   position: absolute;
+  //   bottom: 100px;
+  //   left: 50%;
+  //   background: #fff;
+  //   border-radius: 50%;
+  //   width: 56px;
+  //   height: 56px;
+  //   display: flex;
+  //   align-items: center;
+  //   justify-content: center;
+  //   z-index: 3;
+  //   animation: bounce 2s infinite;
+  // }
 }
 @media screen and (max-width: 576px) {
   /* Hero Section */
+  .hero-swiper {
+    height: 60vh;
+  }
   .hero-section-tv {
     width: 100%;
-    height: 95vh; /* Consistent with .mySwiper */
+    height: 60vh; /* Consistent with .mySwiper */
     // background-repeat: no-repeat; /* Prevent background repeat */
     padding: 1.6rem;
   }
+  // .scroll-down {
+  //   position: absolute;
+  //   bottom: 100px;
+  //   left: 50%;
+  //   background: #fff;
+  //   border-radius: 50%;
+  //   width: 56px;
+  //   height: 56px;
+  //   display: flex;
+  //   align-items: center;
+  //   justify-content: center;
+  //   z-index: 3;
+  //   animation: bounce 2s infinite;
+  // }
 }

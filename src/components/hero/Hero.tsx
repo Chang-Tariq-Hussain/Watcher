@@ -37,7 +37,7 @@ export default function Hero() {
       className="hero-swiper"
       modules={[Autoplay, Pagination]} // Enable Autoplay module
       autoplay={{
-        delay: 2000, // 5 seconds delay between slides
+        delay: 5000, // 5 seconds delay between slides
         disableOnInteraction: false, // Continue autoplay after user interaction
       }}
       pagination={{
