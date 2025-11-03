@@ -44,7 +44,7 @@ export default function HeroTv() {
       noSwiping={true}
       modules={[Autoplay, Pagination]} // Enable Autoplay module
       autoplay={{
-        delay: 5000, // 5 seconds delay between slides
+        delay: 500000000, // 5 seconds delay between slides
         disableOnInteraction: false, // Continue autoplay after user interaction
       }}
       pagination={{
