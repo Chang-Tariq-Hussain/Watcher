@@ -91,11 +91,26 @@
   margin-top: 16px;
 }
 
+.navbar ul li {
+  position: relative;
+}
+
 .navbar a {
   text-decoration: none;
   color: var(--white);
   font-weight: 500;
   transition: var(--transition-fast);
+}
+
+.navbar a.active::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: -17px;
+  width: 5px;
+  height: 40px;
+  background: var(--primary-color);
+  border-radius: 10px;
 }
 
 .navbar a button {
