@@ -109,7 +109,7 @@
   right: -17px;
   width: 5px;
   height: 40px;
-  background: var(--primary-color);
+  background: var(--gradient-primary);
   border-radius: 10px;
 }
 
@@ -127,6 +127,11 @@
   color: white;
   display: flex;
   align-items: center;
+}
+
+.navbar a.active button {
+  background: #b30e0e;
+  box-shadow: 2px 3px 4px #000;
 }
 
 .navbar.collapsed a button {
