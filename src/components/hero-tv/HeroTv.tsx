@@ -39,9 +39,9 @@ export default function HeroTv() {
   return (
     <Swiper
       direction="vertical"
-      className="hero-swiper"
-      allowTouchMove={false}
-      noSwiping={true}
+      className="hero-tv-swiper"
+      // allowTouchMove={false}
+      // noSwiping={true}
       modules={[Autoplay, Pagination]} // Enable Autoplay module
       autoplay={{
         delay: 5000, // 5 seconds delay between slides
@@ -102,9 +102,9 @@ export default function HeroTv() {
                 Watch
               </button>
 
-              {/* <a href="#tv-shows" className="scroll-down">
+              <a href="#tv-shows" className="scroll-down">
                 <i className="ri-arrow-down-line ri-xl"></i>
-              </a> */}
+              </a>
             </div>
           </SwiperSlide>
         ))

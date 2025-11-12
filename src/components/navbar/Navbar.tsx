@@ -4,21 +4,31 @@ import type { AppDispatch, RootState } from "../../redux/store/store";
 import { useEffect, useState } from "react";
 import { getTopRatedMovies } from "../../api/movie-api";
 import type { Movie, MovieListResponse } from "../../types/movie";
-import { IMAGE_BASE } from "../../utils/contant";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { toggleSidebar } from "../../redux/features/ui/uiSlice";
 
 export const mainMenuItems = [
-  { icon: "fa-compass", label: "Browse", link: "/" },
-  { icon: "fa-arrow-trend-up", label: "Trending", link: "/trending" },
-  { icon: "ri-movie-line", label: "Movies", link: "/movies" },
-  { icon: "ri-tv-line", label: "TV Shows", link: "/tv-shows" },
-  { icon: "fa-grip", label: "Collection", link: "/collections" },
+  { icon: "fa-compass", label: "Browse", link: "/", isActive: true },
+  {
+    icon: "fa-arrow-trend-up",
+    label: "Trending",
+    link: "/trending",
+    isActive: false,
+  },
+  { icon: "ri-movie-line", label: "Movies", link: "/movies", isActive: false },
+  { icon: "ri-tv-line", label: "TV Shows", link: "/tv-shows", isActive: false },
+  {
+    icon: "fa-grip",
+    label: "Collection",
+    link: "/collections",
+    isActive: false,
+  },
 ];
 
 export default function Navbar() {
   const { isSidebarOpen } = useSelector((state: RootState) => state.ui);
   const [topRatedMovies, setTopRatedMovies] = useState<Movie[]>([]);
+  const location = useLocation();
   const dispatch = useDispatch<AppDispatch>();
   useEffect(() => {
     const fetchTopRatedMovies = async () => {
@@ -59,7 +69,10 @@ export default function Navbar() {
         <ul>
           {mainMenuItems.map((item) => (
             <li key={item.label}>
-              <Link to={item.link}>
+              <Link
+                to={item.link}
+                className={location.pathname === item.link ? "active" : ""}
+              >
                 <button>
                   <i className={`fa-solid ${item.icon} fa-lg`}></i>
                   {!isSidebarOpen && <span>{item.label}</span>}

@@ -120,6 +120,26 @@
   ); /* Fallback hover color if variable not defined */
 }
 
+// .scroll-down {
+//   display: flex;
+// }
+
+@keyframes bounce {
+  0%,
+  20%,
+  50%,
+  80%,
+  100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-18px);
+  }
+  60% {
+    transform: translateY(-9px);
+  }
+}
+
 .hero-swiper {
   height: 100vh;
 
@@ -229,40 +249,78 @@
 //   }
 // }
 
-@media screen and (min-width: 1200px) and (max-width: 1399px) {
+@media screen and (min-width: 1400px) {
   .hero-swiper {
+    height: 100vh;
     .hero-section {
       height: 100vh !important;
+    }
+    .scroll-down {
+      display: none;
+    }
+  }
+}
+@media screen and (min-width: 1200px) and (max-width: 1399px) {
+  .hero-swiper {
+    height: 90vh !important;
+    .hero-section {
+      height: 90vh !important;
+    }
+    .scroll-down {
+      display: none;
     }
   }
 }
 @media screen and (min-width: 992px) and (max-width: 1199px) {
   .hero-swiper {
-    height: 90vh;
+    height: 85vh !important;
     .hero-section {
       width: 100%;
-      height: 100vh;
+      height: 85vh !important;
       padding: 2.8rem;
 
       .overview {
         width: 65%;
       }
     }
+
+    .scroll-down {
+      display: none;
+    }
   }
 }
 @media screen and (min-width: 768px) and (max-width: 991px) {
-  .mySwiper {
-    width: 100%;
-    min-height: 85vh; /* Match hero-section height */
-  }
-
   .hero-swiper {
-    height: 80vh;
+    height: 80vh !important;
     .hero-section {
       width: 100%;
-      height: 90vh; /* Consistent with .mySwiper */
+      height: 80vh !important; /* Consistent with .mySwiper */
       // background-repeat: no-repeat; /* Prevent background repeat */
       padding: 2.4rem;
+
+      > *:not(.scroll-down) {
+        margin: 1.4rem 0;
+      }
+      .overview {
+        width: 70%;
+        // color: #b9b9b9 !important;
+      }
+    }
+
+    .scroll-down {
+      display: none;
+      // position: absolute;
+      // bottom: 80px;
+      // left: 50%;
+      // background: #fff;
+      // border-radius: 50%;
+      // width: 56px;
+      // height: 56px;
+      // display: flex;
+      // align-items: center;
+      // justify-content: center;
+      // z-index: 3;
+      // animation: bounce 2s infinite;
     }
   }
 
@@ -277,14 +335,6 @@
     padding: 4px 8px;
   }
 
-  /* Overview */
-  .hero-section {
-    .overview {
-      width: 70%;
-      // color: #b9b9b9 !important;
-    }
-  }
-
   .info .rating img,
   .info .language img {
     width: 38px; /* Consistent size for rating/language images */
@@ -297,8 +347,6 @@
   }
 
   .hero-swiper {
-    height: 90vh;
-
     .custom-bullet {
       width: 8px;
       height: 8px;
@@ -312,52 +360,69 @@
 @media screen and (min-width: 576px) and (max-width: 767px) {
   /* Hero Section */
   .hero-swiper {
-    height: 60vh;
+    height: 70vh !important;
     .hero-section {
       width: 100%;
-      height: 50vh; /* Consistent with .mySwiper */
+      height: 70vh !important; /* Consistent with .mySwiper */
       // background-repeat: no-repeat; /* Prevent background repeat */
       padding: 2rem;
+
+      > *:not(.scroll-down) {
+        margin: 1.2rem 0;
+      }
+      .overview {
+        width: 90% !important;
+        // color: #b9b9b9 !important;
+      }
     }
-  }
-  .scroll-down {
-    position: absolute;
-    bottom: 100px;
-    left: 50%;
-    background: #fff;
-    border-radius: 50%;
-    width: 56px;
-    height: 56px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 3;
-    animation: bounce 2s infinite;
+    .scroll-down {
+      position: absolute;
+      bottom: 50px;
+      left: 50%;
+      background: #fff;
+      border-radius: 50%;
+      width: 56px;
+      height: 56px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 3;
+      animation: bounce 2s infinite;
+    }
   }
 }
 @media screen and (max-width: 576px) {
   /* Hero Section */
   .hero-swiper {
-    height: 60vh;
-  }
-  .hero-section {
-    width: 100%;
-    height: 60vh; /* Consistent with .mySwiper */
-    // background-repeat: no-repeat; /* Prevent background repeat */
-    padding: 1.6rem;
-  }
-  .scroll-down {
-    position: absolute;
-    bottom: 100px;
-    left: 50%;
-    background: #fff;
-    border-radius: 50%;
-    width: 56px;
-    height: 56px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 3;
-    animation: bounce 2s infinite;
+    height: 70vh !important;
+
+    .hero-section {
+      width: 100%;
+      height: 70vh !important; /* Consistent with .mySwiper */
+      // background-repeat: no-repeat; /* Prevent background repeat */
+      padding: 1.6rem;
+
+      > *:not(.scroll-down) {
+        margin: 1rem 0;
+      }
+      .overview {
+        width: 90% !important;
+        // color: #b9b9b9 !important;
+      }
+    }
+    .scroll-down {
+      position: absolute;
+      bottom: 30px;
+      left: 50%;
+      background: #fff;
+      border-radius: 50%;
+      width: 56px;
+      height: 56px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 3;
+      animation: bounce 2s infinite;
+    }
   }
 }

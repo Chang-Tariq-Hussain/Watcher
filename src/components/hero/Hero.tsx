@@ -92,6 +92,10 @@ export default function Hero() {
               >
                 Watch
               </button>
+
+              <a href="#movies-list" className="scroll-down">
+                <i className="ri-arrow-down-line ri-xl"></i>
+              </a>
             </div>
           </SwiperSlide>
         ))

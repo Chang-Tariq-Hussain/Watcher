@@ -43,9 +43,9 @@ export default function TvShows() {
   }, [category, page, dispatch]);
 
   return (
-    <div className="tv-shows" id="tv-shows">
+    <div className="tv-shows">
       <HeroTv />
-      <div className="tv-shows-list  container">
+      <div className="tv-shows-list  container" id="tv-shows">
         <ThemeBreadcrumb title="Tv Shows" />
         <div className="list-heading">
           <h2 className="heading-2 border-bottom">Tv Shows</h2>
