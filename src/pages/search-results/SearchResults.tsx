@@ -60,7 +60,7 @@ export default function SearchResults() {
           if (loading) {
             return (
               <>
-                {Array.from({ length: 20 }).map((_, index) => (
+                {Array.from({ length: 20 }).map((_) => (
                   <ImageSkeleton />
                 ))}
               </>
