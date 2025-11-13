@@ -1,6 +1,6 @@
-import React from "react";
 import { Skeleton } from "antd";
 import type { CSSProperties } from "react";
+import React from "react";
 
 interface TextSkeletonProps {
   lines?: number; // number of text lines

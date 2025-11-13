@@ -1,18 +1,18 @@
+import { Pagination, Select } from "antd";
 import { useDispatch, useSelector } from "react-redux";
+import Cards from "../../components/cards/Cards";
 import HeroTv from "../../components/hero-tv/HeroTv";
 import ThemeBreadcrumb from "../../components/theme-breadcrumb/ThemeBreadcrumb";
 import { type AppDispatch, type RootState } from "../../redux/store/store";
-import { Empty, Pagination, Select, Spin } from "antd";
-import Cards from "../../components/cards/Cards";
 import "./tv-shows.scss";
 
+import { useEffect } from "react";
+import ImageSkeleton from "../../components/skeletons/ImageSkeleton";
 import {
   fetchTvShowsByCategory,
   setCategory,
   setPage,
 } from "../../redux/features/tv/tvSlice";
-import { useEffect } from "react";
-import ImageSkeleton from "../../components/skeletons/ImageSkeleton";
 
 const categoryOptions = [
   { value: "popular", label: "Popular" },

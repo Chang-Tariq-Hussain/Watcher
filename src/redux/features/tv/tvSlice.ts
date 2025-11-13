@@ -1,7 +1,5 @@
-import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import type {PayloadAction} from '@reduxjs/toolkit'
-import { getMoviesByCategory } from "../../../api/movie-api";
-import type { Movie, MovieListResponse } from "../../../types/movie";
+import type { PayloadAction } from '@reduxjs/toolkit';
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { getTvShowsByCategory } from "../../../api/tv-shows";
 import type { TvShow, TvShowListResponse } from "../../../types/tvShows";
 

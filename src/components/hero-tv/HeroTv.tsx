@@ -1,16 +1,14 @@
 import { useEffect, useState } from "react";
-import "./hero-tv.scss";
-import { getNowPlayingMovies } from "../../api/movie-api";
-import type { Movie } from "../../types/movie";
-import { Swiper, SwiperSlide } from "swiper/react";
+import { useNavigate } from "react-router-dom";
 import { Autoplay, Pagination } from "swiper/modules";
+import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/swiper.css";
-import { IMAGE_BASE } from "../../utils/contant";
 import { getTvShowsByCategory } from "../../api/tv-shows";
 import type { TvShow } from "../../types/tvShows";
-import HomepageSkeleton from "../skeletons/homage/HomepageSkeleton";
+import { IMAGE_BASE } from "../../utils/contant";
 import { showChars } from "../../utils/helperFunctions";
-import { useNavigate } from "react-router-dom";
+import HomepageSkeleton from "../skeletons/homage/HomepageSkeleton";
+import "./hero-tv.scss";
 
 export default function HeroTv() {
   const [nowPlayingTvShows, setNowPlayingTvShows] = useState<TvShow[]>([]);

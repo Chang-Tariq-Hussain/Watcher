@@ -1,20 +1,17 @@
+import { Pagination, Select } from "antd";
 import { useEffect } from "react";
-import { Select, Pagination, Spin, Empty } from "antd";
-import Card from "../card/Card";
 import "./movie-list.scss";
 
 import { useDispatch, useSelector } from "react-redux";
-import type { RootState, AppDispatch } from "../../redux/store/store";
 import {
   fetchMoviesByCategory,
   setCategory,
   setPage,
 } from "../../redux/features/movies/movieSlice";
-import type { Movie } from "../../types/movie";
-import ThemeBreadcrumb from "../theme-breadcrumb/ThemeBreadcrumb";
-import { Link } from "react-router-dom";
+import type { AppDispatch, RootState } from "../../redux/store/store";
 import Cards from "../cards/Cards";
 import ImageSkeleton from "../skeletons/ImageSkeleton";
+import ThemeBreadcrumb from "../theme-breadcrumb/ThemeBreadcrumb";
 
 const categoryOptions = [
   { value: "popular", label: "Popular" },

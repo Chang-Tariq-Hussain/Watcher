@@ -1,4 +1,3 @@
-import ImageSkeleton from "../skeletons/ImageSkeleton";
 import "./card.scss";
 
 export interface CardProps {
@@ -7,7 +6,7 @@ export interface CardProps {
   poster: string | null;
 }
 
-export default function Card({ overview, poster, title }: CardProps) {
+export default function Card({ poster, title }: CardProps) {
   const IMAGE_BASE = "https://image.tmdb.org/t/p/w500";
 
   return (

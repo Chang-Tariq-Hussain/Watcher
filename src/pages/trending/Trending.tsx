@@ -1,10 +1,8 @@
+import { Pagination, Spin } from "antd";
 import { useEffect, useState } from "react";
-import ThemeBreadcrumb from "../../components/theme-breadcrumb/ThemeBreadcrumb";
 import { getTrendingAll } from "../../api/trending-api";
-import type { TvShow } from "../../types/tvShows";
-import type { Movie } from "../../types/movie";
-import { Empty, Pagination, Spin } from "antd";
 import Cards from "../../components/cards/Cards";
+import ThemeBreadcrumb from "../../components/theme-breadcrumb/ThemeBreadcrumb";
 import "./trending.scss";
 
 export default function Trending() {

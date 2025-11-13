@@ -1,14 +1,14 @@
-import ThemeBreadcrumb from "../../components/theme-breadcrumb/ThemeBreadcrumb";
+import { Empty, Pagination } from "antd";
+import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { type AppDispatch, type RootState } from "../../redux/store/store";
 import { Link, useNavigate } from "react-router-dom";
 import Card from "../../components/card/Card";
-import type { MultiSearchResult } from "../../types/search";
-import { Empty, Pagination, Spin } from "antd";
-import "./search-results.scss";
-import { useEffect } from "react";
-import { setPage } from "../../redux/features/search/searchSlice";
 import ImageSkeleton from "../../components/skeletons/ImageSkeleton";
+import ThemeBreadcrumb from "../../components/theme-breadcrumb/ThemeBreadcrumb";
+import { setPage } from "../../redux/features/search/searchSlice";
+import { type AppDispatch, type RootState } from "../../redux/store/store";
+import type { MultiSearchResult } from "../../types/search";
+import "./search-results.scss";
 
 export default function SearchResults() {
   const { results, loading, query, page, totalPages } = useSelector(

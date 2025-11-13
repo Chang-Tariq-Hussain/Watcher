@@ -1,14 +1,13 @@
 import { useEffect, useState } from "react";
-import "./header.scss";
-import { searchMovies, searchMulti } from "../../api/search-api";
 import { useDispatch, useSelector } from "react-redux";
-import type { AppDispatch, RootState } from "../../redux/store/store";
-import { toggleSidebar, toggleTheme } from "../../redux/features/ui/uiSlice";
 import { useNavigate } from "react-router-dom";
 import {
   fetchSearchResults,
   setQuery,
 } from "../../redux/features/search/searchSlice";
+import { toggleSidebar, toggleTheme } from "../../redux/features/ui/uiSlice";
+import type { AppDispatch, RootState } from "../../redux/store/store";
+import "./header.scss";
 
 export default function Header() {
   const [searchKeyword, setSearchKeyword] = useState("");

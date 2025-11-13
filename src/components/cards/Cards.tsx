@@ -1,9 +1,8 @@
-import React, { useState } from "react";
+import { Empty } from "antd";
 import { Link } from "react-router-dom";
-import Card from "../card/Card";
 import type { Movie } from "../../types/movie";
 import type { TvShow } from "../../types/tvShows";
-import { Empty } from "antd";
+import Card from "../card/Card";
 
 export interface CardsProps<T extends Movie | TvShow> {
   data: T[];

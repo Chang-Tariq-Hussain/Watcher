@@ -1,11 +1,8 @@
-import "./navbar.scss";
 import { useDispatch, useSelector } from "react-redux";
-import type { AppDispatch, RootState } from "../../redux/store/store";
-import { useEffect, useState } from "react";
-import { getTopRatedMovies } from "../../api/movie-api";
-import type { Movie, MovieListResponse } from "../../types/movie";
 import { Link, useLocation } from "react-router-dom";
 import { toggleSidebar } from "../../redux/features/ui/uiSlice";
+import type { AppDispatch, RootState } from "../../redux/store/store";
+import "./navbar.scss";
 
 export const mainMenuItems = [
   { icon: "fa-compass", label: "Browse", link: "/", isActive: true },
@@ -27,18 +24,8 @@ export const mainMenuItems = [
 
 export default function Navbar() {
   const { isSidebarOpen } = useSelector((state: RootState) => state.ui);
-  const [topRatedMovies, setTopRatedMovies] = useState<Movie[]>([]);
   const location = useLocation();
   const dispatch = useDispatch<AppDispatch>();
-  useEffect(() => {
-    const fetchTopRatedMovies = async () => {
-      const response: MovieListResponse = await getTopRatedMovies();
-      console.log("response", response);
-      setTopRatedMovies(response.results);
-    };
-
-    fetchTopRatedMovies();
-  }, []);
 
   return (
     <div className={`navbar ${isSidebarOpen ? "collapsed" : ""}`}>
